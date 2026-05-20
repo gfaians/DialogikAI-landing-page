@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile App Deployment Checklist</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.0.0/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f3; color: #1a1a18; min-height: 100vh; padding: 2rem 1rem; }
+  .page { max-width: 720px; margin: 0 auto; }
+  h1 { font-size: 22px; font-weight: 500; color: #1a1a18; margin-bottom: 4px; }
+  .subtitle { font-size: 13px; color: #5f5e5a; margin-bottom: 1.5rem; }
+  .prog-label { font-size: 13px; color: #5f5e5a; margin-bottom: 6px; }
+  .progress-bar-bg { height: 6px; background: #e8e6df; border-radius: 99px; margin-bottom: 1.5rem; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: #1d9e75; border-radius: 99px; transition: width 0.3s ease; }
+  .filter-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .filter-btn { font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 99px; border: 1px solid #c8c6bc; background: #fff; color: #5f5e5a; cursor: pointer; transition: background 0.15s; }
+  .filter-btn:hover { background: #f0ede6; }
+  .filter-btn.active { outline: 2px solid currentColor; outline-offset: 1px; }
+  .filter-ALL { color: #444441; }
+  .filter-DEV { background: #e6f1fb; color: #0c447c; border-color: #b5d4f4; }
+  .filter-QA  { background: #eaf3de; color: #3b6d11; border-color: #c0dd97; }
+  .filter-PO  { background: #faeeda; color: #633806; border-color: #fac775; }
+  .filter-PM  { background: #eeedfe; color: #3c3489; border-color: #cecbf6; }
+  .filter-UX  { background: #faece7; color: #712b13; border-color: #f5c4b3; }
+  .section { margin-bottom: 1rem; background: #fff; border: 1px solid #e0ded6; border-radius: 12px; overflow: hidden; }
+  .sec-header { display: flex; align-items: center; gap: 10px; padding: 0.75rem 1rem; cursor: pointer; user-select: none; border-bottom: 1px solid #e0ded6; background: #fff; }
+  .sec-header:hover { background: #f8f6f0; }
+  .sec-icon { font-size: 18px; color: #888780; }
+  .sec-title { font-size: 14px; font-weight: 500; color: #1a1a18; flex: 1; }
+  .sec-badge { font-size: 11px; padding: 2px 8px; border-radius: 99px; background: #f0ede6; color: #5f5e5a; white-space: nowrap; }
+  .sec-badge.done { background: #e1f5ee; color: #0f6e56; }
+  .chevron { font-size: 14px; color: #888780; transition: transform 0.2s; }
+  .section.open .chevron { transform: rotate(180deg); }
+  .items { display: none; }
+  .section.open .items { display: block; }
+  .item { border-bottom: 1px solid #e0ded6; }
+  .item:last-child { border-bottom: none; }
+  .item.hidden { display: none; }
+  .item-row { display: flex; align-items: flex-start; gap: 10px; padding: 0.6rem 1rem; cursor: pointer; transition: background 0.15s; }
+  .item-row:hover { background: #f8f6f0; }
+  .item.checked .item-row { opacity: 0.5; }
+  .checkbox { width: 18px; height: 18px; border-radius: 4px; border: 1.5px solid #b4b2a9; flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; background: #fff; transition: all 0.15s; }
+  .checkbox.checked { background: #1d9e75; border-color: #1d9e75; }
+  .checkbox .ti { font-size: 12px; color: #fff; display: none; }
+  .checkbox.checked .ti { display: block; }
+  .item-body { flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 8px; min-width: 0; }
+  .item-text { font-size: 13px; color: #1a1a18; line-height: 1.5; }
+  .item.checked .item-text { text-decoration: line-through; color: #888780; }
+  .item-right { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+  .owner-pill { font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 99px; white-space: nowrap; }
+  .owner-DEV { background: #e6f1fb; color: #0c447c; }
+  .owner-QA  { background: #eaf3de; color: #3b6d11; }
+  .owner-PO  { background: #faeeda; color: #633806; }
+  .owner-PM  { background: #eeedfe; color: #3c3489; }
+  .owner-UX  { background: #faece7; color: #712b13; }
+  .explain-btn { font-size: 11px; padding: 2px 8px; border-radius: 99px; border: 1px solid #c8c6bc; background: #fff; color: #5f5e5a; cursor: pointer; display: flex; align-items: center; gap: 4px; white-space: nowrap; }
+  .explain-btn:hover { background: #f0ede6; }
+  .explainer { margin: 0 1rem 0.75rem 2.5rem; padding: 0.75rem 1rem; border-left: 2px solid #1d9e75; background: #f8f6f0; }
+  .explainer p { font-size: 13px; color: #2c2c2a; line-height: 1.7; margin-bottom: 0.5rem; }
+  .explainer p:last-child { margin-bottom: 0; }
+  .explainer code { font-family: "SFMono-Regular", Consolas, monospace; font-size: 12px; background: #fff; border: 1px solid #e0ded6; border-radius: 4px; padding: 1px 5px; color: #2c2c2a; }
+  .reset-btn { font-size: 12px; color: #5f5e5a; background: none; border: 1px solid #c8c6bc; border-radius: 8px; padding: 5px 14px; cursor: pointer; display: block; margin: 1rem 0 0 auto; }
+  .reset-btn:hover { background: #f0ede6; }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>Mobile app deployment checklist</h1>
+  <p class="subtitle">Track build and release tasks across your team</p>
+  <p class="prog-label" id="prog-label">0 of 0 items complete</p>
+  <div class="progress-bar-bg"><div class="progress-bar-fill" id="prog-fill" style="width:0%"></div></div>
+  <div class="filter-row" id="filters"></div>
+  <div id="sections"></div>
+  <button class="reset-btn" onclick="resetAll()"><i class="ti ti-refresh"></i> Reset all</button>
+</div>
+
+<script>
+const OWNERS={DEV:{label:"Dev",cls:"owner-DEV"},QA:{label:"QA",cls:"owner-QA"},PO:{label:"PO",cls:"owner-PO"},PM:{label:"PM",cls:"owner-PM"},UX:{label:"UX",cls:"owner-UX"}};
+const data=[
+  {icon:"ti-device-mobile",title:"App configuration",items:[
+    {text:"Set unique app bundle ID / package name",owner:"DEV",howto:`<p>On iOS, the bundle ID is set in Xcode under your target's <code>General</code> tab (e.g. <code>com.yourcompany.appname</code>). It must match exactly what is registered in App Store Connect. On Android, the application ID lives in <code>app/build.gradle</code> under <code>defaultConfig { applicationId "com.yourcompany.appname" }</code>.</p><p>Pick a reverse-domain format and stick to it — changing the ID after release creates a new app in the stores. Use lowercase letters, numbers, and dots only.</p>`},
+    {text:"Define app version number and build number",owner:"DEV",howto:`<p>iOS uses two fields: <code>CFBundleShortVersionString</code> (the marketing version, e.g. <code>2.1.0</code>) and <code>CFBundleVersion</code> (the build number, incremented with each upload). Set both in <code>Info.plist</code> or Xcode's General tab.</p><p>Android uses <code>versionName</code> (human-readable, e.g. <code>"2.1.0"</code>) and <code>versionCode</code> (integer, must increase with every Play Store upload) in <code>build.gradle</code>. Automate incrementing build/version codes in CI to avoid manual errors.</p>`},
+    {text:"Configure app display name and short name",owner:"PM",howto:`<p>The display name is what users see under the app icon on their home screen. On iOS set <code>CFBundleDisplayName</code> in <code>Info.plist</code>. On Android set <code>android:label</code> in <code>AndroidManifest.xml</code>.</p><p>Keep it under 12–14 characters or it truncates on smaller screens. Verify the name is not already taken in both stores before finalising, since store names and home screen names are independent fields.</p>`},
+    {text:"Set minimum OS version targets (iOS & Android)",owner:"DEV",howto:`<p>On iOS, set <code>IPHONEOS_DEPLOYMENT_TARGET</code> in your Xcode build settings. Apple recommends supporting the current and previous major version. On Android, set <code>minSdkVersion</code> in <code>build.gradle</code>.</p><p>Check your analytics or industry data (e.g. Android distribution dashboard) to confirm what percentage of your target audience runs each OS version. Lower minimums mean wider reach but more compatibility work.</p>`},
+    {text:"Configure app permissions (camera, location, notifications, etc.)",owner:"DEV",howto:`<p>On iOS, add a usage description key for every permission in <code>Info.plist</code> (e.g. <code>NSCameraUsageDescription</code>). Apple will reject apps without these strings. Only request permissions your app actually uses.</p><p>On Android, declare permissions in <code>AndroidManifest.xml</code>. Dangerous permissions (camera, location, contacts) also need a runtime request using <code>ActivityCompat.requestPermissions()</code>. Follow the principle of least privilege — request only what you need, and request it at the moment it becomes relevant, not on first launch.</p>`},
+    {text:"Set up deep linking / universal links",owner:"DEV",howto:`<p>iOS Universal Links require hosting a JSON file at <code>https://yourdomain.com/.well-known/apple-app-site-association</code> that lists your team ID, bundle ID, and the URL paths the app should handle. Register the associated domain in Xcode under <code>Signing &amp; Capabilities</code>.</p><p>Android App Links work similarly — host a <code>/.well-known/assetlinks.json</code> file and declare <code>intent-filter</code> entries with <code>autoVerify="true"</code> in your manifest. Test both using the respective platform CLI tools before release.</p>`},
+    {text:"Configure URL schemes",owner:"DEV",howto:`<p>Custom URL schemes (e.g. <code>myapp://</code>) let other apps or web pages open yours. On iOS, add the scheme under <code>URL Types</code> in your target's Info tab. On Android, add an <code>intent-filter</code> with <code>scheme</code> in your manifest.</p><p>Unlike Universal Links, custom schemes are not verified, so any app can claim them. Use them for internal navigation (e.g. from push notifications or marketing emails) but prefer Universal/App Links for security-sensitive flows.</p>`},
+  ]},
+  {icon:"ti-certificate",title:"Signing & certificates",items:[
+    {text:"Create/renew Apple Developer certificates",owner:"DEV",howto:`<p>In Xcode, go to <code>Settings → Accounts</code>, select your Apple ID, and click <code>Manage Certificates</code> to create a new distribution certificate. Alternatively, generate a CSR in Keychain Access and upload it at developer.apple.com.</p><p>Distribution certificates expire after one year. Set a calendar reminder 30 days before expiry. If a certificate expires while your app is live, existing installs still work, but you cannot push updates until you renew and re-sign.</p>`},
+    {text:"Generate provisioning profiles (development & distribution)",owner:"DEV",howto:`<p>Provisioning profiles link your certificate, app ID, and (for development profiles) device UDIDs. Create them at developer.apple.com under <code>Certificates, Identifiers &amp; Profiles</code>. You need separate profiles for development (ad-hoc testing) and App Store distribution.</p><p>In Xcode, enable <code>Automatically manage signing</code> to let Xcode handle profile creation and rotation. For CI pipelines, use Fastlane Match to store certificates and profiles in a shared encrypted repo.</p>`},
+    {text:"Create Android keystore and store credentials securely",owner:"DEV",howto:`<p>Generate a keystore with: <code>keytool -genkey -v -keystore release.jks -alias mykey -keyalg RSA -keysize 2048 -validity 10000</code>. Fill in all the prompts. The keystore and passwords must never be committed to version control.</p><p>Store the keystore in a secrets manager (AWS Secrets Manager, GitHub Actions secrets, or similar). Losing the keystore means you can never update your app on the Play Store — back it up in at least two secure locations.</p>`},
+    {text:"Configure signing configs in build settings",owner:"DEV",howto:`<p>In Android <code>app/build.gradle</code>, add a <code>signingConfigs</code> block for release that reads credentials from environment variables or a local <code>keystore.properties</code> file (git-ignored). Apply it in the <code>release</code> build type.</p><p>On iOS, set the correct provisioning profile and certificate in <code>Build Settings → Code Signing</code> or via the Xcode Signing &amp; Capabilities tab. In CI, tools like Fastlane Gym or <code>xcodebuild</code> accept signing parameters as arguments.</p>`},
+    {text:"Verify certificate expiry dates",owner:"DEV",howto:`<p>In Keychain Access on Mac, filter by certificates and check the expiry of your iOS distribution certificate. On the Apple Developer portal, check under Certificates. Android keystores do not expire in the traditional sense, but note your <code>-validity</code> value when you created it.</p><p>Add expiry dates to your team calendar or a monitoring tool. A lapsed certificate will block App Store submissions until renewed, which can cause release delays.</p>`},
+  ]},
+  {icon:"ti-paint",title:"Assets & branding",items:[
+    {text:"Supply all required app icon sizes (iOS & Android)",owner:"UX",howto:`<p>iOS requires icons at multiple resolutions from 20pt to 1024pt. Use an asset generator like makeappicon.com or the Xcode asset catalog — drop in a 1024×1024 px PNG and Xcode generates all sizes. Ensure the icon has no alpha channel (Apple rejects transparent icons).</p><p>Android requires an Adaptive Icon: a foreground layer and a background layer, each 108×108 dp, with the safe zone in the central 72×72 dp area. Use Android Studio's Image Asset Studio (<code>File → New → Image Asset</code>) to generate all densities (mdpi through xxxhdpi).</p>`},
+    {text:"Create splash/launch screen for all device sizes",owner:"UX",howto:`<p>iOS uses a Launch Screen storyboard (set in <code>Info.plist → UILaunchStoryboardName</code>). Design it in Xcode using Auto Layout so it scales across all screen sizes. Avoid putting content that differs from your first screen — it causes a jarring flash.</p><p>Android uses a <code>SplashScreen</code> API (introduced in Android 12, backported via <code>androidx.core:core-splashscreen</code>). Define a theme with <code>windowSplashScreenBackground</code> and an animated icon. Keep splash screens brief — they should display only while the app initialises.</p>`},
+    {text:"Add adaptive icon for Android (foreground + background layers)",owner:"UX",howto:`<p>Adaptive icons allow launchers to apply different shapes (circle, squircle, rounded square) to your icon. Create two assets: a foreground PNG with transparency and a background PNG (or color). Both should be 108×108 dp with your key content in the central 72×72 dp safe zone.</p><p>Define them in <code>res/mipmap-anydpi-v26/ic_launcher.xml</code> using <code>&lt;adaptive-icon&gt;</code> with foreground and background items. Test in Android Studio's icon preview to see how it looks in different shapes.</p>`},
+    {text:"Prepare App Store / Play Store screenshots for all required device sizes",owner:"UX",howto:`<p>App Store Connect requires screenshots for iPhone 6.9", 6.5", and 5.5" displays, plus iPad Pro 13" and 11" if you support iPad. Play Store requires at least 2 screenshots, up to 8, at a minimum of 320px on the short side.</p><p>Use a tool like Sketch, Figma, or Fastlane Snapshot to generate screenshots programmatically. Frame them in device mockups with short benefit-focused captions. Screenshots are your primary conversion tool in the store listing.</p>`},
+    {text:"Write app preview video (optional but recommended)",owner:"PM",howto:`<p>App Store previews are 15–30 second videos (up to 500 MB, H.264, up to 1920×1080) recorded directly from the device showing actual app usage. Play Store allows promo videos hosted on YouTube.</p><p>Capture the 3–5 most compelling moments of your app. Lead with the core value in the first 3 seconds. Avoid voice-over that requires sound — many users browse stores with sound off. Record on a real device using QuickTime (iOS) or Android Studio screen recorder.</p>`},
+  ]},
+  {icon:"ti-bug",title:"Testing",items:[
+    {text:"Test on physical devices (not just simulators/emulators)",owner:"QA",howto:`<p>Simulators and emulators don't replicate real hardware behaviour: sensors (GPS, gyroscope), Bluetooth, NFC, camera, biometric auth, actual memory pressure, and thermal throttling all behave differently on real devices.</p><p>Maintain a device lab with at least one low-end and one high-end device per platform. Services like AWS Device Farm, BrowserStack, or Firebase Test Lab provide cloud device access if a physical lab isn't feasible.</p>`},
+    {text:"Test on minimum supported OS versions",owner:"QA",howto:`<p>APIs, UI components, and behaviours can differ significantly between OS versions. A feature that works on iOS 17 may crash on iOS 15 if you've used an API without availability checks.</p><p>Keep at least one device (or simulator) running your minimum supported OS. Use <code>@available(iOS 16, *)</code> guards in Swift and <code>Build.VERSION.SDK_INT</code> checks in Kotlin to branch for older OS versions.</p>`},
+    {text:"Test on small and large screen sizes",owner:"QA",howto:`<p>Test on the smallest device you support (e.g. iPhone SE, small Android phones) and the largest (iPad Pro, Android tablets). Common issues include truncated text, overlapping elements, keyboard covering input fields, and safe area insets being ignored.</p><p>Enable accessibility text size scaling during testing — users who set large fonts will expose Auto Layout or constraint issues quickly.</p>`},
+    {text:"Verify offline / poor network behavior",owner:"QA",howto:`<p>Use Xcode's Network Link Conditioner (available in Additional Tools for Xcode) or Android Studio's emulator network throttling to simulate 3G, high latency, and no connectivity.</p><p>Test what happens when a request times out mid-flow, when the user starts offline, and when connectivity drops mid-session. Ensure the app shows meaningful error states (not blank screens), caches data where appropriate, and resumes gracefully when connectivity returns.</p>`},
+    {text:"Test push notification delivery end-to-end",owner:"QA",howto:`<p>Send test notifications via your backend or a tool like Firebase Console directly to a test device token. Verify delivery in foreground, background, and force-quit app states — each requires different handling code.</p><p>Test notification deep links open the correct screen. On iOS, verify you're using the correct APNs environment (sandbox vs production) — a common source of missing notifications in production.</p>`},
+    {text:"Validate in-app purchases in sandbox environment",owner:"QA",howto:`<p>On iOS, create sandbox test accounts in App Store Connect and sign into the device's sandbox account (Settings → App Store → Sandbox Account). Run purchase flows for each product: new purchase, restore, subscription renewal, cancellation.</p><p>On Android, use the Play Console's license testing accounts. Validate that your backend correctly processes and verifies receipt/purchase tokens using server-side validation — never trust client-side purchase confirmation alone.</p>`},
+    {text:"Perform accessibility audit (VoiceOver / TalkBack)",owner:"QA",howto:`<p>Enable VoiceOver on iOS (<code>Settings → Accessibility → VoiceOver</code>) and navigate your entire app using swipe gestures only. Every interactive element should have a meaningful accessibility label. Check TalkBack on Android the same way.</p><p>Use Xcode's Accessibility Inspector and Android Studio's Accessibility Scanner to catch issues programmatically. Ensure colour contrast ratios meet WCAG AA (4.5:1 for normal text).</p>`},
+    {text:"Run performance profiling (memory, CPU, battery)",owner:"DEV",howto:`<p>On iOS, use Instruments (Xcode → Product → Profile) with the Time Profiler, Allocations, and Leaks templates. Identify memory leaks, retain cycles, and CPU-heavy operations on the main thread.</p><p>On Android, use Android Studio's Profiler (View → Tool Windows → Profiler) to inspect CPU, memory, and energy usage. Look for: excessive wake locks, background work blocking the main thread, and memory that grows unboundedly during normal use.</p>`},
+  ]},
+  {icon:"ti-shield-lock",title:"Security",items:[
+    {text:"Enable certificate pinning for sensitive API calls",owner:"DEV",howto:`<p>Certificate pinning prevents man-in-the-middle attacks by verifying the server's certificate matches a known value. On iOS, implement it using <code>URLSessionDelegate</code> and <code>didReceive challenge</code>, or use a library like TrustKit. On Android, configure it in your <code>network_security_config.xml</code> or via OkHttp's <code>CertificatePinner</code>.</p><p>Pin the public key hash rather than the full certificate so you can rotate certificates without a new app release. Have a plan for emergency pin updates — a pinning bug can make your app unable to communicate with your server.</p>`},
+    {text:"Ensure sensitive data is not stored in plain text",owner:"DEV",howto:`<p>Never store tokens, passwords, or PII in <code>UserDefaults</code> (iOS) or <code>SharedPreferences</code> (Android) — these are plain text files. Use iOS Keychain for secrets and Android Keystore for cryptographic keys.</p><p>Review your app's sandbox folder and databases for any unintentionally stored sensitive data. Disable keyboard autocorrect and screenshot prevention on sensitive input fields.</p>`},
+    {text:"Validate all user inputs to prevent injection attacks",owner:"DEV",howto:`<p>Never construct SQL queries, API calls, or HTML by concatenating user input. Use parameterised queries for any local database operations (SQLite, Core Data). Sanitise and escape inputs before display to prevent XSS in WebViews.</p><p>Validate data type, length, and format on both the client (for UX) and the server (for security) — client-side validation can always be bypassed.</p>`},
+    {text:"Configure ProGuard / R8 obfuscation for Android",owner:"DEV",howto:`<p>Enable R8 in your release build by setting <code>minifyEnabled true</code> and <code>shrinkResources true</code> in the release build type of <code>build.gradle</code>. R8 combines obfuscation, shrinking, and optimisation in one step.</p><p>Add a <code>proguard-rules.pro</code> file to keep classes that are accessed via reflection. Test the release build thoroughly after enabling — obfuscation can break apps that rely on class/method names at runtime.</p>`},
+    {text:"Enable Bitcode for iOS (if required)",owner:"DEV",howto:`<p>Bitcode was deprecated by Apple in Xcode 14 and is no longer required or enabled by default for iOS/tvOS apps. If you are targeting watchOS, Bitcode may still be relevant.</p><p>For new projects in Xcode 14+, simply leave Bitcode disabled (the default). If maintaining an older project, set <code>ENABLE_BITCODE = NO</code> in Build Settings to avoid build warnings.</p>`},
+    {text:"Remove all debug logs and test credentials from release build",owner:"DEV",howto:`<p>Use build flags to strip debug logging: in Swift use <code>#if DEBUG</code> blocks; in Android use <code>BuildConfig.DEBUG</code> conditionals, or a logging library like Timber that can be a no-op tree in release.</p><p>Scan your codebase for hardcoded API keys, test usernames, and internal URLs using a secrets scanner (e.g. <code>git-secrets</code> or <code>truffleHog</code>). Move all environment-specific config to build-time injection via environment variables or a CI secrets manager.</p>`},
+  ]},
+  {icon:"ti-chart-bar",title:"Analytics & monitoring",items:[
+    {text:"Integrate crash reporting (e.g. Crashlytics, Sentry)",owner:"DEV",howto:`<p>Add the Firebase Crashlytics SDK (or Sentry) via your package manager. For iOS add the run script phase to upload dSYM files — without it, crash reports will show obfuscated stack traces. For Android, R8/ProGuard mapping files are uploaded automatically by the Crashlytics Gradle plugin.</p><p>Verify crashes appear in the dashboard by triggering a test crash during development (<code>FirebaseCrashlytics.getInstance().crash()</code>). Set up Slack or email alerts for crash rate increases above a defined threshold.</p>`},
+    {text:"Set up performance monitoring",owner:"DEV",howto:`<p>Firebase Performance Monitoring auto-captures app startup time, HTTP request latency, and screen rendering performance with zero configuration after SDK integration. Custom traces can be added around any operation.</p><p>For more detailed APM, consider Datadog Mobile, New Relic, or Sentry Performance. Establish baseline metrics before launch so you can detect regressions in future releases.</p>`},
+    {text:"Configure analytics event tracking",owner:"PO",howto:`<p>Work with the PO to define a tracking plan: list every user action worth measuring (screen views, button taps, funnel steps, errors), the event name convention, and the properties each event should carry. Document this in a spreadsheet before writing any code.</p><p>Implement events using your analytics SDK (Firebase Analytics, Mixpanel, Amplitude). Use consistent naming conventions (snake_case, verb_noun format like <code>purchase_completed</code>). Avoid tracking PII.</p>`},
+    {text:"Test that analytics fire correctly in staging",owner:"QA",howto:`<p>Use Firebase DebugView (enable with <code>-FIRAnalyticsDebugEnabled</code> launch argument on iOS, or <code>adb shell setprop debug.firebase.analytics.app</code> on Android) to see events in real time in the Firebase console.</p><p>Walk through every key user journey and verify the correct events fire with the correct properties. Check for duplicate events, missing properties, and events firing in wrong states.</p>`},
+    {text:"Set up alerts for crash rate spikes",owner:"DEV",howto:`<p>In Firebase Crashlytics, go to the project's Alerts section and configure an email or Slack notification when crash-free user rate drops below a threshold (e.g. 99.5%). In Sentry, use Alert Rules with conditions like "error count > N in 1 hour".</p><p>Define different severity levels: a 0.1% crash rate increase may be a warning; a 1% increase should page someone. Connect alerts to your incident response process so ownership is clear when something fires post-launch.</p>`},
+  ]},
+  {icon:"ti-bell",title:"Push notifications",items:[
+    {text:"Register APNs certificate / key for iOS",owner:"DEV",howto:`<p>Apple recommends using an APNs Auth Key (.p8) over a certificate — it never expires and works across all your apps. Create it at developer.apple.com under <code>Keys</code>, selecting Apple Push Notifications service. Download it once (you cannot re-download it).</p><p>Upload the .p8 key to your push notification provider (FCM, OneSignal, your own server) along with your Key ID and Team ID. If using a certificate instead, note it expires annually.</p>`},
+    {text:"Configure Firebase Cloud Messaging (FCM) for Android",owner:"DEV",howto:`<p>Add the <code>google-services.json</code> file to your Android app module, apply the Google services Gradle plugin, and add the Firebase Messaging dependency. Extend <code>FirebaseMessagingService</code> to handle incoming messages and token refresh events.</p><p>Store the FCM token on your backend when it is issued or refreshed (<code>onNewToken</code> callback). Test by sending a message to a specific token from the Firebase Console.</p>`},
+    {text:"Handle notification permission request flow gracefully",owner:"UX",howto:`<p>On iOS 16+ and Android 13+, notification permission must be explicitly requested. Don't request it on first launch — users who haven't experienced your app's value yet will deny it. Trigger the request after the user has completed a meaningful action.</p><p>Show a custom pre-permission screen explaining the benefit before calling the system dialog. If the user denies, gracefully degrade and offer a way to enable notifications later from settings.</p>`},
+    {text:"Test foreground, background, and killed-app notification states",owner:"QA",howto:`<p>iOS and Android handle notifications differently depending on app state. Foreground: the system does not show a banner by default on iOS — you must implement <code>UNUserNotificationCenterDelegate</code> to decide how to display it. Background and killed: the system shows the notification automatically.</p><p>Test each state manually by sending a notification while the app is active, backgrounded, and force-closed. Verify deep links from notification taps navigate to the correct screen in all three states.</p>`},
+    {text:"Set up notification categories and actions if needed",owner:"PO",howto:`<p>Actionable notifications let users respond without opening the app (e.g. "Reply", "Mark as done"). On iOS, register <code>UNNotificationCategory</code> objects with <code>UNNotificationAction</code> items at app launch. Include the category identifier in the notification payload.</p><p>On Android, add action buttons using <code>NotificationCompat.Builder.addAction()</code> and handle them in a <code>BroadcastReceiver</code>. Work with the PO to decide which notification types warrant actions.</p>`},
+  ]},
+  {icon:"ti-upload",title:"Store submission",items:[
+    {text:"Write app store listing copy (title, subtitle, description)",owner:"PM",howto:`<p>The App Store title is 30 characters max; the subtitle is 30 characters. The description is 4000 characters but only the first 3 lines show without "More" — lead with your strongest value proposition. Play Store has a 50-character title, 80-character short description, and 4000-character full description.</p><p>Focus on benefits, not features. Avoid keyword stuffing — Apple will reject listings that read like keyword lists. Write for humans first, search algorithms second.</p>`},
+    {text:"Prepare keyword list for ASO",owner:"PM",howto:`<p>App Store Optimisation (ASO) starts with keyword research. Use tools like AppFollow, Sensor Tower, or AppTweak to find high-traffic, low-competition keywords. iOS gives you a hidden 100-character keyword field in App Store Connect (separate from your title/subtitle). Do not repeat words already in your title.</p><p>Play Store indexes your full description, so weave keywords naturally into the text. Review and iterate keyword strategy monthly based on store analytics and competitor movements.</p>`},
+    {text:"Fill in all required metadata (category, age rating, contact info)",owner:"PM",howto:`<p>In App Store Connect: choose a primary and optional secondary category, complete the age rating questionnaire honestly (it affects discoverability), and provide a support URL and marketing URL. An incomplete metadata form will block submission.</p><p>In Play Store Console: set the app category, content rating (complete the IARC questionnaire), add a privacy policy URL, and fill in the store listing contact details.</p>`},
+    {text:"Complete privacy policy URL and data usage disclosure",owner:"PM",howto:`<p>A privacy policy URL is mandatory for both stores if your app collects any user data (including analytics). Host it at a stable public URL (not a Google Doc). It must accurately describe what data you collect, why, and with whom it is shared.</p><p>Ensure the policy is written in plain language and covers all SDKs you use (ad networks, analytics, crash reporters). Update it whenever you add new data collection.</p>`},
+    {text:"Submit App Privacy details in App Store Connect",owner:"DEV",howto:`<p>In App Store Connect, navigate to your app and complete the Privacy section (the "nutrition label"). For each data type your app collects, declare whether it is linked to the user's identity, used for tracking, and the purpose.</p><p>This includes data collected by third-party SDKs. Review each SDK's privacy documentation to understand what it collects. Inaccurate declarations can lead to rejection or removal.</p>`},
+    {text:"Complete Play Store data safety questionnaire",owner:"DEV",howto:`<p>In Play Console, go to <code>App content → Data safety</code>. Declare all data types collected or shared, whether it is encrypted in transit, and whether users can request deletion. This applies to data collected by your code and by third-party libraries.</p><p>Submitting false information violates Play Store policy. Budget time for this — the form is detailed and requires input from engineering and legal/privacy teams.</p>`},
+    {text:"Set up TestFlight (iOS) or Internal Test Track (Android) for beta",owner:"DEV",howto:`<p>For iOS, upload a build to App Store Connect, then go to TestFlight and add internal testers (up to 100 Apple ID accounts in your team) or create an external testing group (up to 10,000 users, requires Beta App Review).</p><p>For Android, go to Play Console → Testing → Internal Testing, upload your AAB, and add tester email addresses or a Google Group. Internal track is instant; closed/open testing tracks require a brief review.</p>`},
+    {text:"Build release binary and upload to store",owner:"DEV",howto:`<p>For iOS, archive the app in Xcode (<code>Product → Archive</code>), then use the Organizer to distribute to App Store Connect. Use Fastlane <code>gym</code> and <code>deliver</code> for CI automation. Ensure you're building with the distribution provisioning profile.</p><p>For Android, generate a signed AAB (<code>Build → Generate Signed Bundle/APK</code>). Google now requires the AAB format for new apps. Upload via Play Console or use Fastlane <code>supply</code>.</p>`},
+    {text:"Submit for review and respond to any reviewer feedback",owner:"PO",howto:`<p>In App Store Connect, select your build, complete all metadata, set the release date (manual or automatic after approval), and click Submit for Review. Review typically takes 24–48 hours. Track status in App Store Connect or via the App Store Connect API.</p><p>If rejected, read the rejection reason carefully in Resolution Center. Respond professionally and specifically. You can appeal rejections you believe are incorrect.</p>`},
+  ]},
+  {icon:"ti-rocket",title:"Post-launch",items:[
+    {text:"Monitor crash dashboards in the first 24–48 hours",owner:"DEV",howto:`<p>The first hours after launch see the highest volume of diverse user environments. Watch Crashlytics or Sentry in real time for new crash groups. A drop in crash-free user rate below 99% should trigger investigation; below 95% should trigger a hotfix process.</p><p>Have a hotfix release process documented before launch day — know how quickly you can push an emergency update and who needs to approve it.</p>`},
+    {text:"Watch App Store / Play Store reviews for early feedback",owner:"PM",howto:`<p>New user reviews in the first week surface bugs, confusion points, and missing features that internal testing missed. Use a tool like AppFollow or Appbot to get reviews in Slack or email in real time.</p><p>Respond to negative reviews promptly and professionally. Tag reviews by theme (onboarding, performance, specific features) to inform your next sprint priorities.</p>`},
+    {text:"Verify push notifications reach live users",owner:"QA",howto:`<p>Send a test notification to a production device using a real production token (not a sandbox token). Confirm delivery, correct display, and that tapping it deep links correctly in the production build.</p><p>Check your notification delivery rate in FCM or your push provider's dashboard — delivery rates significantly below 95% may indicate token management issues or APNs environment mismatches.</p>`},
+    {text:"Confirm analytics data flowing into dashboards",owner:"PO",howto:`<p>After launch, open your analytics dashboard and verify events are being received from production users. Compare event counts against DAU/MAU to sense-check volumes. Confirm that key funnel events (registration, first action, purchase) are all present.</p><p>If using a data warehouse pipeline, verify events are landing correctly end-to-end within 24 hours of launch.</p>`},
+    {text:"Plan first update / hotfix pipeline",owner:"PO",howto:`<p>Before launch, agree on the criteria that would trigger a hotfix (e.g. crash rate > 1%, payments broken, login blocked). Document the expedited release process: who approves it, how to fast-track QA, and how to request an App Store expedited review.</p><p>For planned updates, establish a regular cadence (e.g. bi-weekly) and a lightweight release checklist. Keep a prioritised backlog of post-launch improvements.</p>`},
+    {text:"Rotate any secrets or API keys exposed during testing",owner:"DEV",howto:`<p>Any API key, token, or credential used during development, beta testing, or inadvertently committed to version control should be considered compromised and rotated before or immediately after launch.</p><p>Audit your git history with a tool like <code>truffleHog</code> or <code>git-secrets</code> to find any secrets ever committed. Revoke and regenerate them in your API provider's dashboard, then enable secret scanning on your repository going forward.</p>`},
+  ]},
+];
+
+const totalItems=data.reduce((s,sec)=>s+sec.items.length,0);
+const checked={};
+const expanded={};
+data.forEach((s,si)=>s.items.forEach((_,ii)=>{checked[`${si}-${ii}`]=false;expanded[`${si}-${ii}`]=false;}));
+let activeFilter="ALL";
+
+function renderFilters(){
+  const row=document.getElementById('filters');
+  row.innerHTML='';
+  const counts={ALL:totalItems};
+  data.forEach(s=>s.items.forEach(item=>{counts[item.owner]=(counts[item.owner]||0)+1;}));
+  ["ALL","DEV","QA","PO","PM","UX"].forEach(o=>{
+    const btn=document.createElement('button');
+    btn.className='filter-btn filter-'+o+(activeFilter===o?' active':'');
+    btn.textContent=(o==="ALL"?"All":OWNERS[o].label)+' '+(counts[o]||0);
+    btn.onclick=()=>{activeFilter=o;renderFilters();renderSections();};
+    row.appendChild(btn);
+  });
+}
+
+function renderSections(){
+  const container=document.getElementById('sections');
+  container.innerHTML='';
+  data.forEach((section,si)=>{
+    const visible=section.items.filter(item=>activeFilter==="ALL"||item.owner===activeFilter);
+    if(!visible.length)return;
+    const total=section.items.length;
+    const done=section.items.filter((_,ii)=>checked[`${si}-${ii}`]).length;
+    const el=document.createElement('div');
+    el.className='section open';
+    el.innerHTML=`
+      <div class="sec-header" onclick="this.closest('.section').classList.toggle('open')">
+        <i class="ti ${section.icon} sec-icon"></i>
+        <span class="sec-title">${section.title}</span>
+        <span class="sec-badge ${done===total&&total>0?'done':''}">${done}/${total}</span>
+        <i class="ti ti-chevron-down chevron"></i>
+      </div>
+      <div class="items">
+        ${section.items.map((item,ii)=>{
+          const key=`${si}-${ii}`;
+          const isHidden=(activeFilter!=="ALL"&&item.owner!==activeFilter)?' hidden':'';
+          const isChecked=checked[key]?' checked':'';
+          const isExp=expanded[key];
+          const o=OWNERS[item.owner];
+          return `<div class="item${isChecked}${isHidden}" id="item-${key}">
+            <div class="item-row" onclick="toggleCheck(${si},${ii},event)">
+              <div class="checkbox${isChecked}"><i class="ti ti-check"></i></div>
+              <div class="item-body">
+                <span class="item-text">${item.text}</span>
+                <div class="item-right">
+                  <span class="owner-pill ${o.cls}">${o.label}</span>
+                  <button class="explain-btn" onclick="toggleExp(event,${si},${ii})">
+                    <i class="ti ti-bulb"></i>${isExp?'Hide':'How-to'}
+                  </button>
+                </div>
+              </div>
+            </div>
+            ${isExp?`<div class="explainer">${item.howto}</div>`:''}
+          </div>`;
+        }).join('')}
+      </div>`;
+    container.appendChild(el);
+  });
+  updateProgress();
+}
+
+function toggleCheck(si,ii,e){
+  if(e.target.closest('.explain-btn'))return;
+  const key=`${si}-${ii}`;
+  checked[key]=!checked[key];
+  renderSections();
+}
+
+function toggleExp(e,si,ii){
+  e.stopPropagation();
+  const key=`${si}-${ii}`;
+  expanded[key]=!expanded[key];
+  renderSections();
+}
+
+function updateProgress(){
+  const done=Object.values(checked).filter(Boolean).length;
+  document.getElementById('prog-fill').style.width=(done/totalItems*100)+'%';
+  document.getElementById('prog-label').textContent=`${done} of ${totalItems} items complete`;
+}
+
+function resetAll(){
+  Object.keys(checked).forEach(k=>checked[k]=false);
+  Object.keys(expanded).forEach(k=>expanded[k]=false);
+  renderSections();
+}
+
+renderFilters();
+renderSections();
+</script>
+</body>
+</html>

@@ -1,255 +1,326 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mobile App Deployment Checklist</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.0.0/tabler-icons.min.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dialogik — Launching soon</title>
+<meta name="description" content="Dialogik is launching soon. Watch the introduction.">
+<meta name="theme-color" content="#FCF8F3">
+<link rel="canonical" href="https://dialogik.ai/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dialogik.ai/">
+<meta property="og:title" content="Dialogik — Launching soon">
+<meta property="og:description" content="Dialogik is launching soon. Watch the introduction.">
+<meta property="og:image" content="https://dialogik.ai/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%22-17%200%20256%20256%22%3E%3Cpath%20fill%3D%22%23212B4D%22%20fill-rule%3D%22evenodd%22%20d%3D%22M726.0%20254.0C702.6%20250.8%20687.7%20237.0%20693.5%20224.0C696.6%20217.2%20708.2%20214.4%20709.4%20220.2C711.2%20229.0%20719.0%20234.7%20730.7%20235.7C747.9%20237.2%20756.4%20229.6%20757.7%20211.5C758.2%20205.1%20758.7%20202.6%20760.1%20201.4C763.8%20198.1%20761.9%20198.2%20756.8%20201.6C731.4%20218.3%20699.1%20210.6%20690.6%20185.7C687.9%20177.8%20688.3%20137.0%20691.1%20129.5C700.8%20103.5%20739.4%2096.9%20758.4%20118.1C760.9%20120.9%20763.0%20122.5%20763.0%20121.7C763.0%20120.9%20762.3%20119.7%20761.5%20119.0C755.3%20113.9%20766.2%20105.0%20778.6%20105.0L781.1%20105.0L780.8%20163.3L780.5%20221.6L776.8%20229.1C767.5%20247.4%20747.9%20257.1%20726.0%20254.0ZM40.0%20218.1C28.2%20214.2%2014.8%20204.8%2010.8%20197.6C1.1%20180.1%201.5%20183.8%201.5%20110.5C1.5%2051.4%201.6%2047.1%203.4%2040.5C8.3%2022.9%2021.4%209.4%2039.1%203.8L46.5%201.5L111.0%201.5L175.5%201.5L182.8%203.8C200.7%209.5%20215.4%2024.9%20218.9%2041.8C220.3%2048.8%20220.4%20171.5%20219.0%20179.1C216.0%20194.8%20203.1%20209.7%20186.5%20216.6L179.5%20219.5L112.5%20219.7C50.2%20219.9%2045.1%20219.8%2040.0%20218.1ZM265.5%20211.8C265.2%20211.0%20265.1%20188.7%20265.2%20162.3L265.5%20114.2L268.0%20111.5C271.2%20108.0%20275.1%20106.4%20282.2%20105.5L288.0%20104.8L288.0%20153.6C288.0%20207.7%20288.2%20206.0%20281.4%20209.7C276.2%20212.6%20266.3%20213.9%20265.5%20211.8ZM364.0%20211.9C342.6%20206.2%20332.9%20191.4%20336.4%20170.0C340.7%20144.4%20381.3%20134.0%20405.2%20152.3C410.6%20156.4%20411.6%20155.9%20407.0%20151.5C404.4%20149.0%20404.0%20147.9%20404.0%20143.3C404.0%20140.4%20403.2%20136.5%20402.3%20134.5C395.6%20120.4%20366.5%20120.2%20354.5%20134.2C349.9%20139.6%20346.0%20138.7%20342.6%20131.5C337.0%20119.7%20353.5%20107.4%20377.3%20105.4C398.9%20103.7%20416.9%20111.9%20423.8%20126.8L426.5%20132.5L426.8%20166.0C427.2%20202.5%20426.9%20205.3%20422.0%20208.9C418.6%20211.4%20409.3%20213.7%20406.7%20212.7C403.9%20211.7%20404.5%20204.9%20407.5%20202.0C411.7%20198.0%20410.3%20197.5%20405.8%20201.4C394.5%20211.1%20377.2%20215.4%20364.0%20211.9ZM496.4%20212.1C487.1%20209.8%20479.3%20203.3%20475.3%20194.4C473.1%20189.6%20471.9%2079.7%20474.0%2072.7C475.4%2067.9%20480.9%2064.9%20489.7%2064.2L496.0%2063.7L496.0%20123.6C496.0%20180.1%20496.1%20183.7%20497.9%20187.0C501.0%20192.9%20511.1%20194.3%20520.7%20190.4C525.2%20188.5%20525.7%20188.6%20526.9%20192.1C531.8%20206.3%20515.9%20216.7%20496.4%20212.1ZM594.5%20212.0C582.3%20209.5%20570.6%20202.6%20565.1%20194.7C559.4%20186.4%20558.8%20182.7%20559.2%20157.4L559.5%20134.5L562.9%20128.2C580.1%2096.6%20637.0%2098.2%20650.2%20130.7C653.9%20140.1%20653.7%20180.9%20649.9%20189.0C641.7%20206.3%20617.1%20216.5%20594.5%20212.0ZM832.2%20163.7L832.5%20114.2L834.9%20111.6C838.4%20107.9%20843.0%20106.1%20849.6%20105.8L855.5%20105.5L855.5%20154.0C855.5%20198.7%20855.4%20202.8%20853.7%20205.3C851.3%20209.0%20845.1%20211.9%20838.0%20212.7L831.9%20213.3L832.2%20163.7ZM907.0%20145.5C907.0%2078.2%20907.0%2077.6%20909.1%2073.2C911.7%2068.0%20918.8%2064.0%20925.8%2064.0L930.0%2064.0L930.0%20106.5C930.0%20129.9%20930.3%20149.0%20930.6%20149.0C930.9%20149.0%20938.4%20142.4%20947.2%20134.2C956.1%20126.1%20966.1%20117.1%20969.4%20114.1C972.8%20111.1%20975.9%20108.1%20976.3%20107.3C977.8%20104.9%20980.5%20106.0%20984.2%20110.6C990.1%20117.9%20989.2%20120.7%20977.9%20131.0C974.0%20134.6%20968.0%20140.0%20964.7%20143.1L958.6%20148.8L961.5%20153.1C967.2%20161.4%20984.6%20186.5%20988.5%20192.0C999.7%20207.8%20999.7%20207.8%20992.9%20211.2C985.5%20215.0%20979.5%20213.0%20973.7%20204.9C967.0%20195.3%20957.2%20180.7%20953.1%20174.0C950.8%20170.4%20948.0%20166.2%20946.8%20164.7L944.5%20161.9L937.2%20168.5L930.0%20175.2L930.0%20188.6C930.0%20207.3%20927.1%20211.2%20912.5%20212.7L907.0%20213.3L907.0%20145.5ZM392.1%20193.9C401.6%20191.0%20406.5%20182.5%20404.0%20173.5C399.8%20158.5%20370.1%20155.2%20361.0%20168.7C355.7%20176.5%20358.6%20188.5%20367.0%20193.0C371.1%20195.2%20385.8%20195.7%20392.1%20193.9ZM614.0%20191.9C620.5%20190.4%20625.8%20186.6%20628.1%20181.7C630.7%20175.9%20630.9%20142.8%20628.4%20137.7C620.1%20121.4%20591.7%20120.6%20584.0%20136.4C581.3%20142.2%20581.0%20176.0%20583.6%20181.7C587.8%20190.5%20600.9%20194.9%20614.0%20191.9ZM742.5%20189.5C756.3%20185.9%20758.0%20182.3%20758.0%20157.3C758.0%20138.8%20758.0%20138.4%20755.5%20134.8C746.8%20122.0%20721.5%20121.8%20714.3%20134.5C711.3%20139.8%20710.8%20173.0%20713.6%20180.0C717.1%20188.7%20729.7%20192.8%20742.5%20189.5ZM52.8%20180.9C53.8%20180.2%2056.8%20177.3%2059.6%20174.4C68.1%20165.8%2066.8%20166.1%20101.7%20165.6C136.5%20165.2%20140.2%20164.6%20153.0%20158.0C167.0%20150.6%20176.9%20139.7%20183.3%20124.2C188.2%20112.4%20188.1%2090.5%20183.2%2078.5C175.2%2059.3%20161.5%2046.6%20142.0%2040.3L133.5%2037.6L101.0%2037.6C69.2%2037.5%2068.4%2037.6%2062.0%2039.9C50.3%2044.2%2041.4%2052.7%2037.4%2063.5C34.7%2070.7%2033.9%20137.7%2036.5%20141.6C39.1%20145.5%2043.5%20144.9%2048.2%20139.8C53.7%20133.8%2054.1%20131.5%2053.8%20101.3L53.5%2074.5L56.1%2069.5C61.8%2058.3%2068.3%2056.6%20103.0%2057.3C135.0%2058.0%20141.7%2059.8%20152.1%2070.7C171.7%2091.1%20166.5%20126.9%20142.1%20139.4C132.9%20144.2%20131.9%20144.3%2098.0%20144.9L65.5%20145.5L59.0%20149.2C49.5%20154.5%2036.0%20168.6%2036.0%20173.2C36.0%20181.7%2045.7%20186.2%2052.8%20180.9ZM268.2%2091.0C263.1%2087.8%20260.8%2083.4%20261.3%2077.2C262.6%2058.7%20293.0%2059.9%20293.0%2078.5C293.0%2089.8%20278.4%2097.2%20268.2%2091.0ZM835.2%2091.0C821.8%2082.8%20828.0%2064.0%20844.1%2064.0C859.2%2064.0%20865.6%2081.5%20853.7%2090.1C848.7%2093.8%20840.4%2094.2%20835.2%2091.0Z%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Rubik:wght@300;400;500;600&display=swap">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f3; color: #1a1a18; min-height: 100vh; padding: 2rem 1rem; }
-  .page { max-width: 720px; margin: 0 auto; }
-  h1 { font-size: 22px; font-weight: 500; color: #1a1a18; margin-bottom: 4px; }
-  .subtitle { font-size: 13px; color: #5f5e5a; margin-bottom: 1.5rem; }
-  .prog-label { font-size: 13px; color: #5f5e5a; margin-bottom: 6px; }
-  .progress-bar-bg { height: 6px; background: #e8e6df; border-radius: 99px; margin-bottom: 1.5rem; overflow: hidden; }
-  .progress-bar-fill { height: 100%; background: #1d9e75; border-radius: 99px; transition: width 0.3s ease; }
-  .filter-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.25rem; }
-  .filter-btn { font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 99px; border: 1px solid #c8c6bc; background: #fff; color: #5f5e5a; cursor: pointer; transition: background 0.15s; }
-  .filter-btn:hover { background: #f0ede6; }
-  .filter-btn.active { outline: 2px solid currentColor; outline-offset: 1px; }
-  .filter-ALL { color: #444441; }
-  .filter-DEV { background: #e6f1fb; color: #0c447c; border-color: #b5d4f4; }
-  .filter-QA  { background: #eaf3de; color: #3b6d11; border-color: #c0dd97; }
-  .filter-PO  { background: #faeeda; color: #633806; border-color: #fac775; }
-  .filter-PM  { background: #eeedfe; color: #3c3489; border-color: #cecbf6; }
-  .filter-UX  { background: #faece7; color: #712b13; border-color: #f5c4b3; }
-  .section { margin-bottom: 1rem; background: #fff; border: 1px solid #e0ded6; border-radius: 12px; overflow: hidden; }
-  .sec-header { display: flex; align-items: center; gap: 10px; padding: 0.75rem 1rem; cursor: pointer; user-select: none; border-bottom: 1px solid #e0ded6; background: #fff; }
-  .sec-header:hover { background: #f8f6f0; }
-  .sec-icon { font-size: 18px; color: #888780; }
-  .sec-title { font-size: 14px; font-weight: 500; color: #1a1a18; flex: 1; }
-  .sec-badge { font-size: 11px; padding: 2px 8px; border-radius: 99px; background: #f0ede6; color: #5f5e5a; white-space: nowrap; }
-  .sec-badge.done { background: #e1f5ee; color: #0f6e56; }
-  .chevron { font-size: 14px; color: #888780; transition: transform 0.2s; }
-  .section.open .chevron { transform: rotate(180deg); }
-  .items { display: none; }
-  .section.open .items { display: block; }
-  .item { border-bottom: 1px solid #e0ded6; }
-  .item:last-child { border-bottom: none; }
-  .item.hidden { display: none; }
-  .item-row { display: flex; align-items: flex-start; gap: 10px; padding: 0.6rem 1rem; cursor: pointer; transition: background 0.15s; }
-  .item-row:hover { background: #f8f6f0; }
-  .item.checked .item-row { opacity: 0.5; }
-  .checkbox { width: 18px; height: 18px; border-radius: 4px; border: 1.5px solid #b4b2a9; flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; background: #fff; transition: all 0.15s; }
-  .checkbox.checked { background: #1d9e75; border-color: #1d9e75; }
-  .checkbox .ti { font-size: 12px; color: #fff; display: none; }
-  .checkbox.checked .ti { display: block; }
-  .item-body { flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 8px; min-width: 0; }
-  .item-text { font-size: 13px; color: #1a1a18; line-height: 1.5; }
-  .item.checked .item-text { text-decoration: line-through; color: #888780; }
-  .item-right { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
-  .owner-pill { font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 99px; white-space: nowrap; }
-  .owner-DEV { background: #e6f1fb; color: #0c447c; }
-  .owner-QA  { background: #eaf3de; color: #3b6d11; }
-  .owner-PO  { background: #faeeda; color: #633806; }
-  .owner-PM  { background: #eeedfe; color: #3c3489; }
-  .owner-UX  { background: #faece7; color: #712b13; }
-  .explain-btn { font-size: 11px; padding: 2px 8px; border-radius: 99px; border: 1px solid #c8c6bc; background: #fff; color: #5f5e5a; cursor: pointer; display: flex; align-items: center; gap: 4px; white-space: nowrap; }
-  .explain-btn:hover { background: #f0ede6; }
-  .explainer { margin: 0 1rem 0.75rem 2.5rem; padding: 0.75rem 1rem; border-left: 2px solid #1d9e75; background: #f8f6f0; }
-  .explainer p { font-size: 13px; color: #2c2c2a; line-height: 1.7; margin-bottom: 0.5rem; }
-  .explainer p:last-child { margin-bottom: 0; }
-  .explainer code { font-family: "SFMono-Regular", Consolas, monospace; font-size: 12px; background: #fff; border: 1px solid #e0ded6; border-radius: 4px; padding: 1px 5px; color: #2c2c2a; }
-  .reset-btn { font-size: 12px; color: #5f5e5a; background: none; border: 1px solid #c8c6bc; border-radius: 8px; padding: 5px 14px; cursor: pointer; display: block; margin: 1rem 0 0 auto; }
-  .reset-btn:hover { background: #f0ede6; }
+  :root{
+    --navy:#212B4D; --cyan:#00B1F7; --yellow:#FFCD19; --coral:#FF8C5F;
+    --cream:#FCF8F3; --sky:#E0F4FC; --ink:#0F172A;
+    --hand:"Caveat","Segoe Script","Bradley Hand","Rubik","Helvetica Neue",Arial,sans-serif;
+    --font:"Rubik","Helvetica Neue",Arial,"Noto Sans Hebrew",system-ui,-apple-system,sans-serif;
+    color-scheme:light;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:var(--cream); color:var(--navy);
+    font-family:var(--font); font-weight:400; overflow-x:hidden;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+
+  /* ---------- animated brand shapes ---------- */
+  .aura{position:fixed; inset:0; z-index:0; overflow:hidden; pointer-events:none; opacity:.85}
+  .blob{position:absolute; border-radius:50%; filter:blur(64px); will-change:transform}
+  .b1{width:46vmax; height:46vmax; left:-16vmax; top:-16vmax;
+      background:radial-gradient(circle at 35% 35%, rgba(0,177,247,.30), rgba(0,177,247,0) 68%);
+      animation:drift1 30s ease-in-out infinite}
+  .b2{width:40vmax; height:40vmax; right:-14vmax; top:-12vmax;
+      background:radial-gradient(circle at 60% 40%, rgba(255,140,95,.26), rgba(255,140,95,0) 68%);
+      animation:drift2 36s ease-in-out infinite}
+  .b3{width:36vmax; height:36vmax; left:2vmax; bottom:-16vmax;
+      background:radial-gradient(circle at 50% 50%, rgba(255,205,25,.28), rgba(255,205,25,0) 66%);
+      animation:drift3 33s ease-in-out infinite}
+  .b4{width:48vmax; height:48vmax; right:-16vmax; bottom:-20vmax;
+      background:radial-gradient(circle at 45% 55%, rgba(0,177,247,.20), rgba(0,177,247,0) 70%);
+      animation:drift4 40s ease-in-out infinite}
+  @keyframes drift1{0%,100%{transform:translate3d(0,0,0) scale(1)}   50%{transform:translate3d(7vmax,5vmax,0) scale(1.14)}}
+  @keyframes drift2{0%,100%{transform:translate3d(0,0,0) scale(1.06)}50%{transform:translate3d(-6vmax,7vmax,0) scale(.92)}}
+  @keyframes drift3{0%,100%{transform:translate3d(0,0,0) scale(.96)} 50%{transform:translate3d(9vmax,-6vmax,0) scale(1.12)}}
+  @keyframes drift4{0%,100%{transform:translate3d(0,0,0) scale(1)}   50%{transform:translate3d(-7vmax,-5vmax,0) scale(1.1)}}
+
+  .fx{position:fixed; inset:0; z-index:1; pointer-events:none; display:block}
+
+  .grain{
+    position:fixed; inset:0; z-index:2; pointer-events:none; opacity:.05; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .waves{position:fixed; inset:auto 0 0 0; z-index:3; line-height:0; pointer-events:none;
+         animation:swell 14s ease-in-out infinite}
+  .waves svg{display:block; width:100%; height:clamp(150px,26vh,280px)}
+  @keyframes swell{0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)}}
+
+  /* ---------- layout ---------- */
+  .page{
+    position:relative; z-index:4; min-height:100svh; display:flex; flex-direction:column;
+    align-items:center; justify-content:flex-start;
+    padding:calc(env(safe-area-inset-top,0px) + 40px) 20px calc(env(safe-area-inset-bottom,0px) + 28px);
+  }
+  .content{position:relative; z-index:1; margin-top:auto; width:100%; max-width:920px; display:flex; flex-direction:column;
+           align-items:center; gap:clamp(20px,3.6svh,40px)}
+
+  .logo{display:block; width:clamp(132px,21vw,196px); height:auto; color:var(--navy)}
+
+  .headline{display:flex; flex-direction:column; align-items:center; gap:clamp(12px,2.2svh,20px); text-align:center}
+  h1{margin:0; font-family:var(--hand); font-weight:600; color:var(--navy);
+     font-size:clamp(2.4rem,9vw,4.6rem); line-height:1; letter-spacing:0}
+  .dots{display:flex; gap:13px; list-style:none; margin:0; padding:0}
+  .dots li{width:10px; height:10px; border-radius:50%; animation:breathe 3.6s ease-in-out infinite}
+  .dots li:nth-child(1){background:var(--navy)}
+  .dots li:nth-child(2){background:var(--cyan); animation-delay:.25s}
+  .dots li:nth-child(3){background:var(--yellow); animation-delay:.5s}
+  .dots li:nth-child(4){background:var(--coral); animation-delay:.75s}
+  @keyframes breathe{0%,100%{transform:scale(1);opacity:.85} 50%{transform:scale(1.3);opacity:1}}
+
+  /* ---------- video ---------- */
+  .stage{position:relative; width:min(880px, 100%, calc(47svh * 16 / 9));
+         transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+  .stage:hover{transform:translateY(-6px)}
+  .stage:hover::before{opacity:.58}
+  .stage::before{
+    content:""; position:absolute; inset:-14px; z-index:0; border-radius:32px;
+    background:linear-gradient(115deg, var(--cyan), var(--yellow) 42%, var(--coral) 72%, var(--cyan));
+    background-size:220% 220%; filter:blur(30px); opacity:.42;
+    animation:glowshift 18s ease-in-out infinite; transition:opacity .5s ease;
+  }
+  @keyframes glowshift{0%,100%{background-position:0% 50%} 50%{background-position:100% 50%}}
+
+  .video{
+    position:relative; z-index:1; width:100%; aspect-ratio:16/9;
+    border-radius:clamp(14px,2.4vw,22px); overflow:hidden; background:var(--navy);
+    border:1px solid rgba(255,255,255,.7);
+    box-shadow:0 2px 8px rgba(33,43,77,.10), 0 30px 70px -26px rgba(33,43,77,.55);
+  }
+  .video iframe{display:block; width:100%; height:100%; border:0}
+
+  /* ---------- footer ---------- */
+  footer{position:relative; z-index:2; margin-top:auto; padding-top:clamp(18px,3svh,36px);
+         display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:6px 10px;
+         font-size:.95rem; color:rgba(33,43,77,.6)}
+  footer .label{color:rgba(33,43,77,.7)}
+  footer a{color:var(--navy); font-weight:500; text-decoration:underline;
+           text-decoration-color:var(--cyan); text-decoration-thickness:2px; text-underline-offset:4px;
+           border-radius:4px; transition:color .18s ease}
+  footer a:hover{color:var(--cyan)}
+  footer a:focus-visible{outline:3px solid var(--cyan); outline-offset:3px}
+
+  @media (max-width:520px){
+    .page{padding-top:calc(env(safe-area-inset-top,0px) + 36px)}
+    .stage::before{inset:-10px; filter:blur(22px)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .blob,.dots li,.waves,.stage::before{animation:none !important}
+    *{transition:none !important}
+  }
 </style>
 </head>
 <body>
-<div class="page">
-  <h1>Mobile app deployment checklist</h1>
-  <p class="subtitle">Track build and release tasks across your team</p>
-  <p class="prog-label" id="prog-label">0 of 0 items complete</p>
-  <div class="progress-bar-bg"><div class="progress-bar-fill" id="prog-fill" style="width:0%"></div></div>
-  <div class="filter-row" id="filters"></div>
-  <div id="sections"></div>
-  <button class="reset-btn" onclick="resetAll()"><i class="ti ti-refresh"></i> Reset all</button>
-</div>
+  <div class="aura" aria-hidden="true">
+    <span class="blob b1"></span><span class="blob b2"></span>
+    <span class="blob b3"></span><span class="blob b4"></span>
+  </div>
+  <canvas class="fx" id="fx" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="waves" aria-hidden="true">
+    <svg viewBox="0 0 1440 280" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#E0F4FC" fill-opacity=".5" d="M0,150 C210,80 380,196 620,168 C860,140 1060,44 1260,66 C1340,75 1400,96 1440,112 L1440,280 L0,280 Z"/>
+      <path fill="#E0F4FC" fill-opacity=".9" d="M0,196 C230,132 420,236 700,214 C980,192 1180,120 1440,152 L1440,280 L0,280 Z"/>
+    </svg>
+  </div>
+
+  <div class="page">
+    <main class="content">
+      <svg class="logo" viewBox="0 0 1000 256" fill="currentColor" role="img" aria-label="Dialogik">
+        <path fill-rule="evenodd" d="M726.0 254.0C702.6 250.8 687.7 237.0 693.5 224.0C696.6 217.2 708.2 214.4 709.4 220.2C711.2 229.0 719.0 234.7 730.7 235.7C747.9 237.2 756.4 229.6 757.7 211.5C758.2 205.1 758.7 202.6 760.1 201.4C763.8 198.1 761.9 198.2 756.8 201.6C731.4 218.3 699.1 210.6 690.6 185.7C687.9 177.8 688.3 137.0 691.1 129.5C700.8 103.5 739.4 96.9 758.4 118.1C760.9 120.9 763.0 122.5 763.0 121.7C763.0 120.9 762.3 119.7 761.5 119.0C755.3 113.9 766.2 105.0 778.6 105.0L781.1 105.0L780.8 163.3L780.5 221.6L776.8 229.1C767.5 247.4 747.9 257.1 726.0 254.0ZM40.0 218.1C28.2 214.2 14.8 204.8 10.8 197.6C1.1 180.1 1.5 183.8 1.5 110.5C1.5 51.4 1.6 47.1 3.4 40.5C8.3 22.9 21.4 9.4 39.1 3.8L46.5 1.5L111.0 1.5L175.5 1.5L182.8 3.8C200.7 9.5 215.4 24.9 218.9 41.8C220.3 48.8 220.4 171.5 219.0 179.1C216.0 194.8 203.1 209.7 186.5 216.6L179.5 219.5L112.5 219.7C50.2 219.9 45.1 219.8 40.0 218.1ZM265.5 211.8C265.2 211.0 265.1 188.7 265.2 162.3L265.5 114.2L268.0 111.5C271.2 108.0 275.1 106.4 282.2 105.5L288.0 104.8L288.0 153.6C288.0 207.7 288.2 206.0 281.4 209.7C276.2 212.6 266.3 213.9 265.5 211.8ZM364.0 211.9C342.6 206.2 332.9 191.4 336.4 170.0C340.7 144.4 381.3 134.0 405.2 152.3C410.6 156.4 411.6 155.9 407.0 151.5C404.4 149.0 404.0 147.9 404.0 143.3C404.0 140.4 403.2 136.5 402.3 134.5C395.6 120.4 366.5 120.2 354.5 134.2C349.9 139.6 346.0 138.7 342.6 131.5C337.0 119.7 353.5 107.4 377.3 105.4C398.9 103.7 416.9 111.9 423.8 126.8L426.5 132.5L426.8 166.0C427.2 202.5 426.9 205.3 422.0 208.9C418.6 211.4 409.3 213.7 406.7 212.7C403.9 211.7 404.5 204.9 407.5 202.0C411.7 198.0 410.3 197.5 405.8 201.4C394.5 211.1 377.2 215.4 364.0 211.9ZM496.4 212.1C487.1 209.8 479.3 203.3 475.3 194.4C473.1 189.6 471.9 79.7 474.0 72.7C475.4 67.9 480.9 64.9 489.7 64.2L496.0 63.7L496.0 123.6C496.0 180.1 496.1 183.7 497.9 187.0C501.0 192.9 511.1 194.3 520.7 190.4C525.2 188.5 525.7 188.6 526.9 192.1C531.8 206.3 515.9 216.7 496.4 212.1ZM594.5 212.0C582.3 209.5 570.6 202.6 565.1 194.7C559.4 186.4 558.8 182.7 559.2 157.4L559.5 134.5L562.9 128.2C580.1 96.6 637.0 98.2 650.2 130.7C653.9 140.1 653.7 180.9 649.9 189.0C641.7 206.3 617.1 216.5 594.5 212.0ZM832.2 163.7L832.5 114.2L834.9 111.6C838.4 107.9 843.0 106.1 849.6 105.8L855.5 105.5L855.5 154.0C855.5 198.7 855.4 202.8 853.7 205.3C851.3 209.0 845.1 211.9 838.0 212.7L831.9 213.3L832.2 163.7ZM907.0 145.5C907.0 78.2 907.0 77.6 909.1 73.2C911.7 68.0 918.8 64.0 925.8 64.0L930.0 64.0L930.0 106.5C930.0 129.9 930.3 149.0 930.6 149.0C930.9 149.0 938.4 142.4 947.2 134.2C956.1 126.1 966.1 117.1 969.4 114.1C972.8 111.1 975.9 108.1 976.3 107.3C977.8 104.9 980.5 106.0 984.2 110.6C990.1 117.9 989.2 120.7 977.9 131.0C974.0 134.6 968.0 140.0 964.7 143.1L958.6 148.8L961.5 153.1C967.2 161.4 984.6 186.5 988.5 192.0C999.7 207.8 999.7 207.8 992.9 211.2C985.5 215.0 979.5 213.0 973.7 204.9C967.0 195.3 957.2 180.7 953.1 174.0C950.8 170.4 948.0 166.2 946.8 164.7L944.5 161.9L937.2 168.5L930.0 175.2L930.0 188.6C930.0 207.3 927.1 211.2 912.5 212.7L907.0 213.3L907.0 145.5ZM392.1 193.9C401.6 191.0 406.5 182.5 404.0 173.5C399.8 158.5 370.1 155.2 361.0 168.7C355.7 176.5 358.6 188.5 367.0 193.0C371.1 195.2 385.8 195.7 392.1 193.9ZM614.0 191.9C620.5 190.4 625.8 186.6 628.1 181.7C630.7 175.9 630.9 142.8 628.4 137.7C620.1 121.4 591.7 120.6 584.0 136.4C581.3 142.2 581.0 176.0 583.6 181.7C587.8 190.5 600.9 194.9 614.0 191.9ZM742.5 189.5C756.3 185.9 758.0 182.3 758.0 157.3C758.0 138.8 758.0 138.4 755.5 134.8C746.8 122.0 721.5 121.8 714.3 134.5C711.3 139.8 710.8 173.0 713.6 180.0C717.1 188.7 729.7 192.8 742.5 189.5ZM52.8 180.9C53.8 180.2 56.8 177.3 59.6 174.4C68.1 165.8 66.8 166.1 101.7 165.6C136.5 165.2 140.2 164.6 153.0 158.0C167.0 150.6 176.9 139.7 183.3 124.2C188.2 112.4 188.1 90.5 183.2 78.5C175.2 59.3 161.5 46.6 142.0 40.3L133.5 37.6L101.0 37.6C69.2 37.5 68.4 37.6 62.0 39.9C50.3 44.2 41.4 52.7 37.4 63.5C34.7 70.7 33.9 137.7 36.5 141.6C39.1 145.5 43.5 144.9 48.2 139.8C53.7 133.8 54.1 131.5 53.8 101.3L53.5 74.5L56.1 69.5C61.8 58.3 68.3 56.6 103.0 57.3C135.0 58.0 141.7 59.8 152.1 70.7C171.7 91.1 166.5 126.9 142.1 139.4C132.9 144.2 131.9 144.3 98.0 144.9L65.5 145.5L59.0 149.2C49.5 154.5 36.0 168.6 36.0 173.2C36.0 181.7 45.7 186.2 52.8 180.9ZM268.2 91.0C263.1 87.8 260.8 83.4 261.3 77.2C262.6 58.7 293.0 59.9 293.0 78.5C293.0 89.8 278.4 97.2 268.2 91.0ZM835.2 91.0C821.8 82.8 828.0 64.0 844.1 64.0C859.2 64.0 865.6 81.5 853.7 90.1C848.7 93.8 840.4 94.2 835.2 91.0Z"/>
+      </svg>
+
+      <div class="headline">
+        <h1>Launching soon</h1>
+        <ul class="dots" aria-hidden="true"><li></li><li></li><li></li><li></li></ul>
+      </div>
+
+      <div class="stage">
+        <div class="video">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/Rc2gy7ZGSJQ?rel=0&amp;modestbranding=1&amp;playsinline=1"
+            title="Dialogik — introduction"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <span class="label">Contact us:</span>
+      <a href="mailto:yonizon3@gmail.com">yonizon3@gmail.com</a>
+    </footer>
+
+  </div>
 
 <script>
-const OWNERS={DEV:{label:"Dev",cls:"owner-DEV"},QA:{label:"QA",cls:"owner-QA"},PO:{label:"PO",cls:"owner-PO"},PM:{label:"PM",cls:"owner-PM"},UX:{label:"UX",cls:"owner-UX"}};
-const data=[
-  {icon:"ti-device-mobile",title:"App configuration",items:[
-    {text:"Set unique app bundle ID / package name",owner:"DEV",howto:`<p>On iOS, the bundle ID is set in Xcode under your target's <code>General</code> tab (e.g. <code>com.yourcompany.appname</code>). It must match exactly what is registered in App Store Connect. On Android, the application ID lives in <code>app/build.gradle</code> under <code>defaultConfig { applicationId "com.yourcompany.appname" }</code>.</p><p>Pick a reverse-domain format and stick to it — changing the ID after release creates a new app in the stores. Use lowercase letters, numbers, and dots only.</p>`},
-    {text:"Define app version number and build number",owner:"DEV",howto:`<p>iOS uses two fields: <code>CFBundleShortVersionString</code> (the marketing version, e.g. <code>2.1.0</code>) and <code>CFBundleVersion</code> (the build number, incremented with each upload). Set both in <code>Info.plist</code> or Xcode's General tab.</p><p>Android uses <code>versionName</code> (human-readable, e.g. <code>"2.1.0"</code>) and <code>versionCode</code> (integer, must increase with every Play Store upload) in <code>build.gradle</code>. Automate incrementing build/version codes in CI to avoid manual errors.</p>`},
-    {text:"Configure app display name and short name",owner:"PM",howto:`<p>The display name is what users see under the app icon on their home screen. On iOS set <code>CFBundleDisplayName</code> in <code>Info.plist</code>. On Android set <code>android:label</code> in <code>AndroidManifest.xml</code>.</p><p>Keep it under 12–14 characters or it truncates on smaller screens. Verify the name is not already taken in both stores before finalising, since store names and home screen names are independent fields.</p>`},
-    {text:"Set minimum OS version targets (iOS & Android)",owner:"DEV",howto:`<p>On iOS, set <code>IPHONEOS_DEPLOYMENT_TARGET</code> in your Xcode build settings. Apple recommends supporting the current and previous major version. On Android, set <code>minSdkVersion</code> in <code>build.gradle</code>.</p><p>Check your analytics or industry data (e.g. Android distribution dashboard) to confirm what percentage of your target audience runs each OS version. Lower minimums mean wider reach but more compatibility work.</p>`},
-    {text:"Configure app permissions (camera, location, notifications, etc.)",owner:"DEV",howto:`<p>On iOS, add a usage description key for every permission in <code>Info.plist</code> (e.g. <code>NSCameraUsageDescription</code>). Apple will reject apps without these strings. Only request permissions your app actually uses.</p><p>On Android, declare permissions in <code>AndroidManifest.xml</code>. Dangerous permissions (camera, location, contacts) also need a runtime request using <code>ActivityCompat.requestPermissions()</code>. Follow the principle of least privilege — request only what you need, and request it at the moment it becomes relevant, not on first launch.</p>`},
-    {text:"Set up deep linking / universal links",owner:"DEV",howto:`<p>iOS Universal Links require hosting a JSON file at <code>https://yourdomain.com/.well-known/apple-app-site-association</code> that lists your team ID, bundle ID, and the URL paths the app should handle. Register the associated domain in Xcode under <code>Signing &amp; Capabilities</code>.</p><p>Android App Links work similarly — host a <code>/.well-known/assetlinks.json</code> file and declare <code>intent-filter</code> entries with <code>autoVerify="true"</code> in your manifest. Test both using the respective platform CLI tools before release.</p>`},
-    {text:"Configure URL schemes",owner:"DEV",howto:`<p>Custom URL schemes (e.g. <code>myapp://</code>) let other apps or web pages open yours. On iOS, add the scheme under <code>URL Types</code> in your target's Info tab. On Android, add an <code>intent-filter</code> with <code>scheme</code> in your manifest.</p><p>Unlike Universal Links, custom schemes are not verified, so any app can claim them. Use them for internal navigation (e.g. from push notifications or marketing emails) but prefer Universal/App Links for security-sensitive flows.</p>`},
-  ]},
-  {icon:"ti-certificate",title:"Signing & certificates",items:[
-    {text:"Create/renew Apple Developer certificates",owner:"DEV",howto:`<p>In Xcode, go to <code>Settings → Accounts</code>, select your Apple ID, and click <code>Manage Certificates</code> to create a new distribution certificate. Alternatively, generate a CSR in Keychain Access and upload it at developer.apple.com.</p><p>Distribution certificates expire after one year. Set a calendar reminder 30 days before expiry. If a certificate expires while your app is live, existing installs still work, but you cannot push updates until you renew and re-sign.</p>`},
-    {text:"Generate provisioning profiles (development & distribution)",owner:"DEV",howto:`<p>Provisioning profiles link your certificate, app ID, and (for development profiles) device UDIDs. Create them at developer.apple.com under <code>Certificates, Identifiers &amp; Profiles</code>. You need separate profiles for development (ad-hoc testing) and App Store distribution.</p><p>In Xcode, enable <code>Automatically manage signing</code> to let Xcode handle profile creation and rotation. For CI pipelines, use Fastlane Match to store certificates and profiles in a shared encrypted repo.</p>`},
-    {text:"Create Android keystore and store credentials securely",owner:"DEV",howto:`<p>Generate a keystore with: <code>keytool -genkey -v -keystore release.jks -alias mykey -keyalg RSA -keysize 2048 -validity 10000</code>. Fill in all the prompts. The keystore and passwords must never be committed to version control.</p><p>Store the keystore in a secrets manager (AWS Secrets Manager, GitHub Actions secrets, or similar). Losing the keystore means you can never update your app on the Play Store — back it up in at least two secure locations.</p>`},
-    {text:"Configure signing configs in build settings",owner:"DEV",howto:`<p>In Android <code>app/build.gradle</code>, add a <code>signingConfigs</code> block for release that reads credentials from environment variables or a local <code>keystore.properties</code> file (git-ignored). Apply it in the <code>release</code> build type.</p><p>On iOS, set the correct provisioning profile and certificate in <code>Build Settings → Code Signing</code> or via the Xcode Signing &amp; Capabilities tab. In CI, tools like Fastlane Gym or <code>xcodebuild</code> accept signing parameters as arguments.</p>`},
-    {text:"Verify certificate expiry dates",owner:"DEV",howto:`<p>In Keychain Access on Mac, filter by certificates and check the expiry of your iOS distribution certificate. On the Apple Developer portal, check under Certificates. Android keystores do not expire in the traditional sense, but note your <code>-validity</code> value when you created it.</p><p>Add expiry dates to your team calendar or a monitoring tool. A lapsed certificate will block App Store submissions until renewed, which can cause release delays.</p>`},
-  ]},
-  {icon:"ti-paint",title:"Assets & branding",items:[
-    {text:"Supply all required app icon sizes (iOS & Android)",owner:"UX",howto:`<p>iOS requires icons at multiple resolutions from 20pt to 1024pt. Use an asset generator like makeappicon.com or the Xcode asset catalog — drop in a 1024×1024 px PNG and Xcode generates all sizes. Ensure the icon has no alpha channel (Apple rejects transparent icons).</p><p>Android requires an Adaptive Icon: a foreground layer and a background layer, each 108×108 dp, with the safe zone in the central 72×72 dp area. Use Android Studio's Image Asset Studio (<code>File → New → Image Asset</code>) to generate all densities (mdpi through xxxhdpi).</p>`},
-    {text:"Create splash/launch screen for all device sizes",owner:"UX",howto:`<p>iOS uses a Launch Screen storyboard (set in <code>Info.plist → UILaunchStoryboardName</code>). Design it in Xcode using Auto Layout so it scales across all screen sizes. Avoid putting content that differs from your first screen — it causes a jarring flash.</p><p>Android uses a <code>SplashScreen</code> API (introduced in Android 12, backported via <code>androidx.core:core-splashscreen</code>). Define a theme with <code>windowSplashScreenBackground</code> and an animated icon. Keep splash screens brief — they should display only while the app initialises.</p>`},
-    {text:"Add adaptive icon for Android (foreground + background layers)",owner:"UX",howto:`<p>Adaptive icons allow launchers to apply different shapes (circle, squircle, rounded square) to your icon. Create two assets: a foreground PNG with transparency and a background PNG (or color). Both should be 108×108 dp with your key content in the central 72×72 dp safe zone.</p><p>Define them in <code>res/mipmap-anydpi-v26/ic_launcher.xml</code> using <code>&lt;adaptive-icon&gt;</code> with foreground and background items. Test in Android Studio's icon preview to see how it looks in different shapes.</p>`},
-    {text:"Prepare App Store / Play Store screenshots for all required device sizes",owner:"UX",howto:`<p>App Store Connect requires screenshots for iPhone 6.9", 6.5", and 5.5" displays, plus iPad Pro 13" and 11" if you support iPad. Play Store requires at least 2 screenshots, up to 8, at a minimum of 320px on the short side.</p><p>Use a tool like Sketch, Figma, or Fastlane Snapshot to generate screenshots programmatically. Frame them in device mockups with short benefit-focused captions. Screenshots are your primary conversion tool in the store listing.</p>`},
-    {text:"Write app preview video (optional but recommended)",owner:"PM",howto:`<p>App Store previews are 15–30 second videos (up to 500 MB, H.264, up to 1920×1080) recorded directly from the device showing actual app usage. Play Store allows promo videos hosted on YouTube.</p><p>Capture the 3–5 most compelling moments of your app. Lead with the core value in the first 3 seconds. Avoid voice-over that requires sound — many users browse stores with sound off. Record on a real device using QuickTime (iOS) or Android Studio screen recorder.</p>`},
-  ]},
-  {icon:"ti-bug",title:"Testing",items:[
-    {text:"Test on physical devices (not just simulators/emulators)",owner:"QA",howto:`<p>Simulators and emulators don't replicate real hardware behaviour: sensors (GPS, gyroscope), Bluetooth, NFC, camera, biometric auth, actual memory pressure, and thermal throttling all behave differently on real devices.</p><p>Maintain a device lab with at least one low-end and one high-end device per platform. Services like AWS Device Farm, BrowserStack, or Firebase Test Lab provide cloud device access if a physical lab isn't feasible.</p>`},
-    {text:"Test on minimum supported OS versions",owner:"QA",howto:`<p>APIs, UI components, and behaviours can differ significantly between OS versions. A feature that works on iOS 17 may crash on iOS 15 if you've used an API without availability checks.</p><p>Keep at least one device (or simulator) running your minimum supported OS. Use <code>@available(iOS 16, *)</code> guards in Swift and <code>Build.VERSION.SDK_INT</code> checks in Kotlin to branch for older OS versions.</p>`},
-    {text:"Test on small and large screen sizes",owner:"QA",howto:`<p>Test on the smallest device you support (e.g. iPhone SE, small Android phones) and the largest (iPad Pro, Android tablets). Common issues include truncated text, overlapping elements, keyboard covering input fields, and safe area insets being ignored.</p><p>Enable accessibility text size scaling during testing — users who set large fonts will expose Auto Layout or constraint issues quickly.</p>`},
-    {text:"Verify offline / poor network behavior",owner:"QA",howto:`<p>Use Xcode's Network Link Conditioner (available in Additional Tools for Xcode) or Android Studio's emulator network throttling to simulate 3G, high latency, and no connectivity.</p><p>Test what happens when a request times out mid-flow, when the user starts offline, and when connectivity drops mid-session. Ensure the app shows meaningful error states (not blank screens), caches data where appropriate, and resumes gracefully when connectivity returns.</p>`},
-    {text:"Test push notification delivery end-to-end",owner:"QA",howto:`<p>Send test notifications via your backend or a tool like Firebase Console directly to a test device token. Verify delivery in foreground, background, and force-quit app states — each requires different handling code.</p><p>Test notification deep links open the correct screen. On iOS, verify you're using the correct APNs environment (sandbox vs production) — a common source of missing notifications in production.</p>`},
-    {text:"Validate in-app purchases in sandbox environment",owner:"QA",howto:`<p>On iOS, create sandbox test accounts in App Store Connect and sign into the device's sandbox account (Settings → App Store → Sandbox Account). Run purchase flows for each product: new purchase, restore, subscription renewal, cancellation.</p><p>On Android, use the Play Console's license testing accounts. Validate that your backend correctly processes and verifies receipt/purchase tokens using server-side validation — never trust client-side purchase confirmation alone.</p>`},
-    {text:"Perform accessibility audit (VoiceOver / TalkBack)",owner:"QA",howto:`<p>Enable VoiceOver on iOS (<code>Settings → Accessibility → VoiceOver</code>) and navigate your entire app using swipe gestures only. Every interactive element should have a meaningful accessibility label. Check TalkBack on Android the same way.</p><p>Use Xcode's Accessibility Inspector and Android Studio's Accessibility Scanner to catch issues programmatically. Ensure colour contrast ratios meet WCAG AA (4.5:1 for normal text).</p>`},
-    {text:"Run performance profiling (memory, CPU, battery)",owner:"DEV",howto:`<p>On iOS, use Instruments (Xcode → Product → Profile) with the Time Profiler, Allocations, and Leaks templates. Identify memory leaks, retain cycles, and CPU-heavy operations on the main thread.</p><p>On Android, use Android Studio's Profiler (View → Tool Windows → Profiler) to inspect CPU, memory, and energy usage. Look for: excessive wake locks, background work blocking the main thread, and memory that grows unboundedly during normal use.</p>`},
-  ]},
-  {icon:"ti-shield-lock",title:"Security",items:[
-    {text:"Enable certificate pinning for sensitive API calls",owner:"DEV",howto:`<p>Certificate pinning prevents man-in-the-middle attacks by verifying the server's certificate matches a known value. On iOS, implement it using <code>URLSessionDelegate</code> and <code>didReceive challenge</code>, or use a library like TrustKit. On Android, configure it in your <code>network_security_config.xml</code> or via OkHttp's <code>CertificatePinner</code>.</p><p>Pin the public key hash rather than the full certificate so you can rotate certificates without a new app release. Have a plan for emergency pin updates — a pinning bug can make your app unable to communicate with your server.</p>`},
-    {text:"Ensure sensitive data is not stored in plain text",owner:"DEV",howto:`<p>Never store tokens, passwords, or PII in <code>UserDefaults</code> (iOS) or <code>SharedPreferences</code> (Android) — these are plain text files. Use iOS Keychain for secrets and Android Keystore for cryptographic keys.</p><p>Review your app's sandbox folder and databases for any unintentionally stored sensitive data. Disable keyboard autocorrect and screenshot prevention on sensitive input fields.</p>`},
-    {text:"Validate all user inputs to prevent injection attacks",owner:"DEV",howto:`<p>Never construct SQL queries, API calls, or HTML by concatenating user input. Use parameterised queries for any local database operations (SQLite, Core Data). Sanitise and escape inputs before display to prevent XSS in WebViews.</p><p>Validate data type, length, and format on both the client (for UX) and the server (for security) — client-side validation can always be bypassed.</p>`},
-    {text:"Configure ProGuard / R8 obfuscation for Android",owner:"DEV",howto:`<p>Enable R8 in your release build by setting <code>minifyEnabled true</code> and <code>shrinkResources true</code> in the release build type of <code>build.gradle</code>. R8 combines obfuscation, shrinking, and optimisation in one step.</p><p>Add a <code>proguard-rules.pro</code> file to keep classes that are accessed via reflection. Test the release build thoroughly after enabling — obfuscation can break apps that rely on class/method names at runtime.</p>`},
-    {text:"Enable Bitcode for iOS (if required)",owner:"DEV",howto:`<p>Bitcode was deprecated by Apple in Xcode 14 and is no longer required or enabled by default for iOS/tvOS apps. If you are targeting watchOS, Bitcode may still be relevant.</p><p>For new projects in Xcode 14+, simply leave Bitcode disabled (the default). If maintaining an older project, set <code>ENABLE_BITCODE = NO</code> in Build Settings to avoid build warnings.</p>`},
-    {text:"Remove all debug logs and test credentials from release build",owner:"DEV",howto:`<p>Use build flags to strip debug logging: in Swift use <code>#if DEBUG</code> blocks; in Android use <code>BuildConfig.DEBUG</code> conditionals, or a logging library like Timber that can be a no-op tree in release.</p><p>Scan your codebase for hardcoded API keys, test usernames, and internal URLs using a secrets scanner (e.g. <code>git-secrets</code> or <code>truffleHog</code>). Move all environment-specific config to build-time injection via environment variables or a CI secrets manager.</p>`},
-  ]},
-  {icon:"ti-chart-bar",title:"Analytics & monitoring",items:[
-    {text:"Integrate crash reporting (e.g. Crashlytics, Sentry)",owner:"DEV",howto:`<p>Add the Firebase Crashlytics SDK (or Sentry) via your package manager. For iOS add the run script phase to upload dSYM files — without it, crash reports will show obfuscated stack traces. For Android, R8/ProGuard mapping files are uploaded automatically by the Crashlytics Gradle plugin.</p><p>Verify crashes appear in the dashboard by triggering a test crash during development (<code>FirebaseCrashlytics.getInstance().crash()</code>). Set up Slack or email alerts for crash rate increases above a defined threshold.</p>`},
-    {text:"Set up performance monitoring",owner:"DEV",howto:`<p>Firebase Performance Monitoring auto-captures app startup time, HTTP request latency, and screen rendering performance with zero configuration after SDK integration. Custom traces can be added around any operation.</p><p>For more detailed APM, consider Datadog Mobile, New Relic, or Sentry Performance. Establish baseline metrics before launch so you can detect regressions in future releases.</p>`},
-    {text:"Configure analytics event tracking",owner:"PO",howto:`<p>Work with the PO to define a tracking plan: list every user action worth measuring (screen views, button taps, funnel steps, errors), the event name convention, and the properties each event should carry. Document this in a spreadsheet before writing any code.</p><p>Implement events using your analytics SDK (Firebase Analytics, Mixpanel, Amplitude). Use consistent naming conventions (snake_case, verb_noun format like <code>purchase_completed</code>). Avoid tracking PII.</p>`},
-    {text:"Test that analytics fire correctly in staging",owner:"QA",howto:`<p>Use Firebase DebugView (enable with <code>-FIRAnalyticsDebugEnabled</code> launch argument on iOS, or <code>adb shell setprop debug.firebase.analytics.app</code> on Android) to see events in real time in the Firebase console.</p><p>Walk through every key user journey and verify the correct events fire with the correct properties. Check for duplicate events, missing properties, and events firing in wrong states.</p>`},
-    {text:"Set up alerts for crash rate spikes",owner:"DEV",howto:`<p>In Firebase Crashlytics, go to the project's Alerts section and configure an email or Slack notification when crash-free user rate drops below a threshold (e.g. 99.5%). In Sentry, use Alert Rules with conditions like "error count > N in 1 hour".</p><p>Define different severity levels: a 0.1% crash rate increase may be a warning; a 1% increase should page someone. Connect alerts to your incident response process so ownership is clear when something fires post-launch.</p>`},
-  ]},
-  {icon:"ti-bell",title:"Push notifications",items:[
-    {text:"Register APNs certificate / key for iOS",owner:"DEV",howto:`<p>Apple recommends using an APNs Auth Key (.p8) over a certificate — it never expires and works across all your apps. Create it at developer.apple.com under <code>Keys</code>, selecting Apple Push Notifications service. Download it once (you cannot re-download it).</p><p>Upload the .p8 key to your push notification provider (FCM, OneSignal, your own server) along with your Key ID and Team ID. If using a certificate instead, note it expires annually.</p>`},
-    {text:"Configure Firebase Cloud Messaging (FCM) for Android",owner:"DEV",howto:`<p>Add the <code>google-services.json</code> file to your Android app module, apply the Google services Gradle plugin, and add the Firebase Messaging dependency. Extend <code>FirebaseMessagingService</code> to handle incoming messages and token refresh events.</p><p>Store the FCM token on your backend when it is issued or refreshed (<code>onNewToken</code> callback). Test by sending a message to a specific token from the Firebase Console.</p>`},
-    {text:"Handle notification permission request flow gracefully",owner:"UX",howto:`<p>On iOS 16+ and Android 13+, notification permission must be explicitly requested. Don't request it on first launch — users who haven't experienced your app's value yet will deny it. Trigger the request after the user has completed a meaningful action.</p><p>Show a custom pre-permission screen explaining the benefit before calling the system dialog. If the user denies, gracefully degrade and offer a way to enable notifications later from settings.</p>`},
-    {text:"Test foreground, background, and killed-app notification states",owner:"QA",howto:`<p>iOS and Android handle notifications differently depending on app state. Foreground: the system does not show a banner by default on iOS — you must implement <code>UNUserNotificationCenterDelegate</code> to decide how to display it. Background and killed: the system shows the notification automatically.</p><p>Test each state manually by sending a notification while the app is active, backgrounded, and force-closed. Verify deep links from notification taps navigate to the correct screen in all three states.</p>`},
-    {text:"Set up notification categories and actions if needed",owner:"PO",howto:`<p>Actionable notifications let users respond without opening the app (e.g. "Reply", "Mark as done"). On iOS, register <code>UNNotificationCategory</code> objects with <code>UNNotificationAction</code> items at app launch. Include the category identifier in the notification payload.</p><p>On Android, add action buttons using <code>NotificationCompat.Builder.addAction()</code> and handle them in a <code>BroadcastReceiver</code>. Work with the PO to decide which notification types warrant actions.</p>`},
-  ]},
-  {icon:"ti-upload",title:"Store submission",items:[
-    {text:"Write app store listing copy (title, subtitle, description)",owner:"PM",howto:`<p>The App Store title is 30 characters max; the subtitle is 30 characters. The description is 4000 characters but only the first 3 lines show without "More" — lead with your strongest value proposition. Play Store has a 50-character title, 80-character short description, and 4000-character full description.</p><p>Focus on benefits, not features. Avoid keyword stuffing — Apple will reject listings that read like keyword lists. Write for humans first, search algorithms second.</p>`},
-    {text:"Prepare keyword list for ASO",owner:"PM",howto:`<p>App Store Optimisation (ASO) starts with keyword research. Use tools like AppFollow, Sensor Tower, or AppTweak to find high-traffic, low-competition keywords. iOS gives you a hidden 100-character keyword field in App Store Connect (separate from your title/subtitle). Do not repeat words already in your title.</p><p>Play Store indexes your full description, so weave keywords naturally into the text. Review and iterate keyword strategy monthly based on store analytics and competitor movements.</p>`},
-    {text:"Fill in all required metadata (category, age rating, contact info)",owner:"PM",howto:`<p>In App Store Connect: choose a primary and optional secondary category, complete the age rating questionnaire honestly (it affects discoverability), and provide a support URL and marketing URL. An incomplete metadata form will block submission.</p><p>In Play Store Console: set the app category, content rating (complete the IARC questionnaire), add a privacy policy URL, and fill in the store listing contact details.</p>`},
-    {text:"Complete privacy policy URL and data usage disclosure",owner:"PM",howto:`<p>A privacy policy URL is mandatory for both stores if your app collects any user data (including analytics). Host it at a stable public URL (not a Google Doc). It must accurately describe what data you collect, why, and with whom it is shared.</p><p>Ensure the policy is written in plain language and covers all SDKs you use (ad networks, analytics, crash reporters). Update it whenever you add new data collection.</p>`},
-    {text:"Submit App Privacy details in App Store Connect",owner:"DEV",howto:`<p>In App Store Connect, navigate to your app and complete the Privacy section (the "nutrition label"). For each data type your app collects, declare whether it is linked to the user's identity, used for tracking, and the purpose.</p><p>This includes data collected by third-party SDKs. Review each SDK's privacy documentation to understand what it collects. Inaccurate declarations can lead to rejection or removal.</p>`},
-    {text:"Complete Play Store data safety questionnaire",owner:"DEV",howto:`<p>In Play Console, go to <code>App content → Data safety</code>. Declare all data types collected or shared, whether it is encrypted in transit, and whether users can request deletion. This applies to data collected by your code and by third-party libraries.</p><p>Submitting false information violates Play Store policy. Budget time for this — the form is detailed and requires input from engineering and legal/privacy teams.</p>`},
-    {text:"Set up TestFlight (iOS) or Internal Test Track (Android) for beta",owner:"DEV",howto:`<p>For iOS, upload a build to App Store Connect, then go to TestFlight and add internal testers (up to 100 Apple ID accounts in your team) or create an external testing group (up to 10,000 users, requires Beta App Review).</p><p>For Android, go to Play Console → Testing → Internal Testing, upload your AAB, and add tester email addresses or a Google Group. Internal track is instant; closed/open testing tracks require a brief review.</p>`},
-    {text:"Configure Firebase App Distribution for pre-release builds",owner:"DEV",howto:`<p>Firebase App Distribution lets you distribute pre-release iOS and Android builds to testers without going through the App Store or Play Store. In the Firebase console, go to App Distribution, upload your IPA or APK/AAB, and invite testers by email. Testers get an email guiding them through installation.</p><p>For automation, integrate via the Firebase CLI (<code>firebase appdistribution:distribute</code>), Fastlane plugin (<code>firebase_app_distribution</code>), or Gradle plugin for Android. This fits naturally into CI/CD — trigger a distribution on every merge to your beta branch. Organise testers into groups (e.g. "internal QA", "stakeholders") so you can target specific builds at specific audiences. If you already use Crashlytics, App Distribution automatically surfaces stability metrics per build, so you can see crash-free rates before promoting to production. See the full docs at <a href="https://firebase.google.com/docs/app-distribution" target="_blank">firebase.google.com/docs/app-distribution</a>.</p>`},
-    {text:"Build release binary and upload to store",owner:"DEV",howto:`<p>For iOS, archive the app in Xcode (<code>Product → Archive</code>), then use the Organizer to distribute to App Store Connect. Use Fastlane <code>gym</code> and <code>deliver</code> for CI automation. Ensure you're building with the distribution provisioning profile.</p><p>For Android, generate a signed AAB (<code>Build → Generate Signed Bundle/APK</code>). Google now requires the AAB format for new apps. Upload via Play Console or use Fastlane <code>supply</code>.</p>`},
-    {text:"Submit for review and respond to any reviewer feedback",owner:"PO",howto:`<p>In App Store Connect, select your build, complete all metadata, set the release date (manual or automatic after approval), and click Submit for Review. Review typically takes 24–48 hours. Track status in App Store Connect or via the App Store Connect API.</p><p>If rejected, read the rejection reason carefully in Resolution Center. Respond professionally and specifically. You can appeal rejections you believe are incorrect.</p>`},
-  ]},
-  {icon:"ti-rocket",title:"Post-launch",items:[
-    {text:"Monitor crash dashboards in the first 24–48 hours",owner:"DEV",howto:`<p>The first hours after launch see the highest volume of diverse user environments. Watch Crashlytics or Sentry in real time for new crash groups. A drop in crash-free user rate below 99% should trigger investigation; below 95% should trigger a hotfix process.</p><p>Have a hotfix release process documented before launch day — know how quickly you can push an emergency update and who needs to approve it.</p>`},
-    {text:"Watch App Store / Play Store reviews for early feedback",owner:"PM",howto:`<p>New user reviews in the first week surface bugs, confusion points, and missing features that internal testing missed. Use a tool like AppFollow or Appbot to get reviews in Slack or email in real time.</p><p>Respond to negative reviews promptly and professionally. Tag reviews by theme (onboarding, performance, specific features) to inform your next sprint priorities.</p>`},
-    {text:"Verify push notifications reach live users",owner:"QA",howto:`<p>Send a test notification to a production device using a real production token (not a sandbox token). Confirm delivery, correct display, and that tapping it deep links correctly in the production build.</p><p>Check your notification delivery rate in FCM or your push provider's dashboard — delivery rates significantly below 95% may indicate token management issues or APNs environment mismatches.</p>`},
-    {text:"Confirm analytics data flowing into dashboards",owner:"PO",howto:`<p>After launch, open your analytics dashboard and verify events are being received from production users. Compare event counts against DAU/MAU to sense-check volumes. Confirm that key funnel events (registration, first action, purchase) are all present.</p><p>If using a data warehouse pipeline, verify events are landing correctly end-to-end within 24 hours of launch.</p>`},
-    {text:"Plan first update / hotfix pipeline",owner:"PO",howto:`<p>Before launch, agree on the criteria that would trigger a hotfix (e.g. crash rate > 1%, payments broken, login blocked). Document the expedited release process: who approves it, how to fast-track QA, and how to request an App Store expedited review.</p><p>For planned updates, establish a regular cadence (e.g. bi-weekly) and a lightweight release checklist. Keep a prioritised backlog of post-launch improvements.</p>`},
-    {text:"Rotate any secrets or API keys exposed during testing",owner:"DEV",howto:`<p>Any API key, token, or credential used during development, beta testing, or inadvertently committed to version control should be considered compromised and rotated before or immediately after launch.</p><p>Audit your git history with a tool like <code>truffleHog</code> or <code>git-secrets</code> to find any secrets ever committed. Revoke and regenerate them in your API provider's dashboard, then enable secret scanning on your repository going forward.</p>`},
-  ]},
-];
+(function () {
+  var canvas = document.getElementById('fx');
+  if (!canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext('2d');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const totalItems=data.reduce((s,sec)=>s+sec.items.length,0);
-const checked={};
-const expanded={};
-data.forEach((s,si)=>s.items.forEach((_,ii)=>{checked[`${si}-${ii}`]=false;expanded[`${si}-${ii}`]=false;}));
-let activeFilter="ALL";
+  var COLORS = ['0,177,247', '255,205,25', '255,140,95', '33,43,77'];
+  var W = 0, H = 0, dpr = 1;
+  var bubbles = [], pops = [];
+  var pointer = { x: -999, y: -999, active: false };
+  var RADIUS = 150;
 
-function renderFilters(){
-  const row=document.getElementById('filters');
-  row.innerHTML='';
-  const counts={ALL:totalItems};
-  data.forEach(s=>s.items.forEach(item=>{counts[item.owner]=(counts[item.owner]||0)+1;}));
-  ["ALL","DEV","QA","PO","PM","UX"].forEach(o=>{
-    const btn=document.createElement('button');
-    btn.className='filter-btn filter-'+o+(activeFilter===o?' active':'');
-    btn.textContent=(o==="ALL"?"All":OWNERS[o].label)+' '+(counts[o]||0);
-    btn.onclick=()=>{activeFilter=o;renderFilters();renderSections();};
-    row.appendChild(btn);
+  function rand(a, b) { return a + Math.random() * (b - a); }
+
+  function makeBubble(initial) {
+    var size = rand(14, 46);
+    return {
+      x: rand(0, W),
+      y: initial ? rand(0, H) : H + size * 2,
+      s: size,
+      vy: -rand(0.12, 0.42) * (size / 30 + 0.6),
+      sway: rand(0, Math.PI * 2),
+      swaySpeed: rand(0.004, 0.011),
+      swayAmp: rand(6, 20),
+      rot: rand(-0.25, 0.25),
+      dx: 0, dy: 0,
+      alpha: rand(0.10, 0.24),
+      color: COLORS[(Math.random() * COLORS.length) | 0]
+    };
+  }
+
+  function count() { return window.innerWidth < 640 ? 13 : 26; }
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var want = count();
+    while (bubbles.length < want) bubbles.push(makeBubble(true));
+    bubbles.length = want;
+  }
+
+  function bubblePath(x, y, s, rot) {
+    var w = s, h = s * 0.78, r = s * 0.3;
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(rot);
+    ctx.beginPath();
+    ctx.moveTo(-w / 2 + r, -h / 2);
+    ctx.arcTo(w / 2, -h / 2, w / 2, h / 2, r);
+    ctx.arcTo(w / 2, h / 2, -w / 2, h / 2, r);
+    ctx.lineTo(-w / 2 + r * 1.35, h / 2);
+    ctx.lineTo(-w / 2 + r * 0.25, h / 2 + s * 0.26);
+    ctx.lineTo(-w / 2 + r * 0.5, h / 2);
+    ctx.arcTo(-w / 2, h / 2, -w / 2, -h / 2, r * 0.8);
+    ctx.arcTo(-w / 2, -h / 2, w / 2, -h / 2, r);
+    ctx.closePath();
+    ctx.restore();
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    var i, b;
+    for (i = 0; i < bubbles.length; i++) {
+      b = bubbles[i];
+      bubblePath(b.x + b.dx, b.y + b.dy, b.s, b.rot);
+      ctx.fillStyle = 'rgba(' + b.color + ',' + b.alpha + ')';
+      ctx.fill();
+    }
+    for (i = 0; i < pops.length; i++) {
+      b = pops[i];
+      bubblePath(b.x, b.y, b.s, b.rot);
+      ctx.fillStyle = 'rgba(' + b.color + ',' + (b.alpha * b.life) + ')';
+      ctx.fill();
+    }
+  }
+
+  function step() {
+    var i, b, ddx, ddy, d, push;
+    for (i = 0; i < bubbles.length; i++) {
+      b = bubbles[i];
+      b.y += b.vy;
+      b.sway += b.swaySpeed;
+      if (pointer.active) {
+        ddx = (b.x + b.dx) - pointer.x;
+        ddy = (b.y + b.dy) - pointer.y;
+        d = Math.sqrt(ddx * ddx + ddy * ddy) || 1;
+        if (d < RADIUS) {
+          push = (1 - d / RADIUS) * 5.5;
+          b.dx += (ddx / d) * push;
+          b.dy += (ddy / d) * push;
+        }
+      }
+      b.dx *= 0.9; b.dy *= 0.9;
+      b.x += Math.sin(b.sway) * b.swaySpeed * b.swayAmp;
+      if (b.y < -b.s * 2) { bubbles[i] = makeBubble(false); }
+      if (b.x < -b.s * 2) b.x = W + b.s; else if (b.x > W + b.s * 2) b.x = -b.s;
+    }
+    for (i = pops.length - 1; i >= 0; i--) {
+      b = pops[i];
+      b.x += b.vx; b.y += b.vy; b.vy += 0.03; b.vx *= 0.985; b.vy *= 0.985;
+      b.life -= 0.012;
+      if (b.life <= 0) pops.splice(i, 1);
+    }
+    draw();
+    raf = requestAnimationFrame(step);
+  }
+
+  function burst(x, y) {
+    if (reduced) return;
+    var n = 9;
+    for (var i = 0; i < n; i++) {
+      var a = (Math.PI * 2 * i) / n + rand(-0.3, 0.3);
+      var sp = rand(1.6, 4.2);
+      pops.push({
+        x: x, y: y, s: rand(9, 22),
+        vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 1,
+        rot: rand(-0.4, 0.4), life: 1, alpha: rand(0.18, 0.34),
+        color: COLORS[(Math.random() * COLORS.length) | 0]
+      });
+    }
+    if (pops.length > 80) pops.splice(0, pops.length - 80);
+  }
+
+  var raf = null;
+  function start() { if (raf === null && !reduced) raf = requestAnimationFrame(step); }
+  function stop() { if (raf !== null) { cancelAnimationFrame(raf); raf = null; } }
+
+  window.addEventListener('resize', function () { resize(); if (reduced) draw(); }, { passive: true });
+  window.addEventListener('pointermove', function (e) {
+    pointer.x = e.clientX; pointer.y = e.clientY; pointer.active = true;
+  }, { passive: true });
+  window.addEventListener('pointerleave', function () { pointer.active = false; }, { passive: true });
+  window.addEventListener('pointerdown', function (e) { burst(e.clientX, e.clientY); }, { passive: true });
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) stop(); else start();
   });
-}
 
-function renderSections(){
-  const container=document.getElementById('sections');
-  container.innerHTML='';
-  data.forEach((section,si)=>{
-    const visible=section.items.filter(item=>activeFilter==="ALL"||item.owner===activeFilter);
-    if(!visible.length)return;
-    const total=section.items.length;
-    const done=section.items.filter((_,ii)=>checked[`${si}-${ii}`]).length;
-    const el=document.createElement('div');
-    el.className='section open';
-    el.innerHTML=`
-      <div class="sec-header" onclick="this.closest('.section').classList.toggle('open')">
-        <i class="ti ${section.icon} sec-icon"></i>
-        <span class="sec-title">${section.title}</span>
-        <span class="sec-badge ${done===total&&total>0?'done':''}">${done}/${total}</span>
-        <i class="ti ti-chevron-down chevron"></i>
-      </div>
-      <div class="items">
-        ${section.items.map((item,ii)=>{
-          const key=`${si}-${ii}`;
-          const isHidden=(activeFilter!=="ALL"&&item.owner!==activeFilter)?' hidden':'';
-          const isChecked=checked[key]?' checked':'';
-          const isExp=expanded[key];
-          const o=OWNERS[item.owner];
-          return `<div class="item${isChecked}${isHidden}" id="item-${key}">
-            <div class="item-row" onclick="toggleCheck(${si},${ii},event)">
-              <div class="checkbox${isChecked}"><i class="ti ti-check"></i></div>
-              <div class="item-body">
-                <span class="item-text">${item.text}</span>
-                <div class="item-right">
-                  <span class="owner-pill ${o.cls}">${o.label}</span>
-                  <button class="explain-btn" onclick="toggleExp(event,${si},${ii})">
-                    <i class="ti ti-bulb"></i>${isExp?'Hide':'How-to'}
-                  </button>
-                </div>
-              </div>
-            </div>
-            ${isExp?`<div class="explainer">${item.howto}</div>`:''}
-          </div>`;
-        }).join('')}
-      </div>`;
-    container.appendChild(el);
-  });
-  updateProgress();
-}
-
-function toggleCheck(si,ii,e){
-  if(e.target.closest('.explain-btn'))return;
-  const key=`${si}-${ii}`;
-  checked[key]=!checked[key];
-  renderSections();
-}
-
-function toggleExp(e,si,ii){
-  e.stopPropagation();
-  const key=`${si}-${ii}`;
-  expanded[key]=!expanded[key];
-  renderSections();
-}
-
-function updateProgress(){
-  const done=Object.values(checked).filter(Boolean).length;
-  document.getElementById('prog-fill').style.width=(done/totalItems*100)+'%';
-  document.getElementById('prog-label').textContent=`${done} of ${totalItems} items complete`;
-}
-
-function resetAll(){
-  Object.keys(checked).forEach(k=>checked[k]=false);
-  Object.keys(expanded).forEach(k=>expanded[k]=false);
-  renderSections();
-}
-
-renderFilters();
-renderSections();
+  resize();
+  if (reduced) draw(); else start();
+})();
 </script>
 </body>
 </html>
